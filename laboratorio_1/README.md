@@ -1,10 +1,15 @@
 # LEER Y EDITAR IMAGEN BMP
+## Integrantes
+- Basurco Cayllahua, Eduardo Rolando
+- Chavez Cruz, Jhunior Kenyi
+- Humpire Cutipa, Hayde Luzmila
+
 ## Preliminares
 - Realizar el algoritmo para la lectura de una imagen BMP *SIN USAR LIBRERIAS*
   - Pruebas con dos imágenes BMP
   - Dos modificaciones distintas
 ## Aviso
-- *SOLO* para la visualización de uso OpenGl
+- *SOLO* para la visualización se usó OpenGl
 - La lectura de imagen bmp se realizo sin librerias. Se puede observar en esta porción de código
 
 ```cpp
