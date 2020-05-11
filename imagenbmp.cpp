@@ -181,13 +181,23 @@ int main(int argc, char *argv[] ){
         return -1;
     }
     printf("filas: %d columnas: %d\n",  nrows, ncols);
-    image = new byte [nrows * ncols ];
+    /*image = new byte [nrows * ncols ];
     byte* BMPptr = BMPimage, *imageptr = image;
     cout << (nrows*ncols) << " 8-bit pixels in image (" <<(nrows*ncols)<< " bytes).\n";
     for ( int row = 0; row <nrows; row++ ){
         for ( int col = 0; col < ncols; col++ ){
             *imageptr++ = 0.30 * BMPimage[0] + 0.59 * BMPimage[1] + 0.11 * BMPimage[2] + 0.5;
             BMPimage += 3;
+        }
+    }
+    */
+    image = new byte [nrows * ncols ];
+    byte* BMPptr = BMPimage, *imageptr = image;
+    cout << (nrows*ncols) << " 8-bit pixels in image (" <<(nrows*ncols)<< " bytes).\n";
+    for ( int row = 0; row <nrows; row++ ){
+        for ( int col = 0; col < ncols; col++ ){
+            *imageptr++ = 0.30 * BMPptr[0] + 0.59 * BMPptr[1] + 0.11 * BMPptr[2] + 0.5;
+            BMPptr += 3;
         }
     }
     
