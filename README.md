@@ -1,4 +1,4 @@
-# TOPICOS EN COMPUTACION GRAFICA UNSA - 5TO AÑO
+# Tópicos en Computación Gráfica
 ## Integrantes
 - Basurco Cayllahua, Eduardo Rolando
 - Chavez Cruz, Jhunior Kenyi
