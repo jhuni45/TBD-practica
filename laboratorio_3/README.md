@@ -5,8 +5,8 @@
 - Humpire Cutipa, Hayde Luzmila
 
 ## Preliminares
-- Realizar la suma de los elementos de una matriz de forma paralela y secuencial
-  - Resultado de la suma
+- Realizar la suma de columnas de una matriz.
+  - Resultado de la suma.
 
 ## Compilación y ejecución de código
 
