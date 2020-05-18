@@ -5,8 +5,8 @@
 #include <math.h>
 
 
-#define M 1025
-#define N 512
+#define M 100000
+#define N 1000
 
 int rows, columns, a[M][N], s[M];
 
