@@ -11,7 +11,7 @@
 ## Compilación y ejecución de código
 
 ```terminal
-$ gcc laboratorio3.c -lpthread -o laboratorio2
+$ gcc laboratorio3.c -lpthread -o laboratorio3
 $ ./laboratorio2
 ```
 ### Para matriz de 1024x512
