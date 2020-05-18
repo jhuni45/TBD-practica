@@ -5,8 +5,8 @@
 #include <math.h>
 
 
-#define M 100000
-#define N 1000
+#define M 1024
+#define N 512
 
 int rows, columns, a[M][N], s[M];
 
@@ -20,17 +20,18 @@ void* f(void* p) {
 }
 
 int main() {
+	srand(time(NULL));
     int i, j, *p, rc;
     int sum = 0;
     pthread_t th[M];
     clock_t parallelT, secuentialTstart, secuentialTend;
     int secuential[M];
 
-    rows = 1024;
-    columns = 512;
+    rows = M;
+    columns = N;
     for (i = 0; i < rows; i++) {
         for (j = 0; j < columns; j++) {
-            a[i][j] = rand() % 5;
+            a[i][j] = 1;
         }
     }
 /*
@@ -59,9 +60,10 @@ int main() {
     
     secuentialTstart=clock();
     //secuencial
+    int acum=0;
     for (i = 0; i < N; i++){
         for ( j = 0; j < M; j++){
-            secuential[j] = secuential[i]+a[j][i];
+           acum+=a[j][i];
         }    
     }
     secuentialTend=clock();
@@ -70,9 +72,7 @@ int main() {
     printf("=> %f\n",(double)(secuentialTend-secuentialTstart)/CLOCKS_PER_SEC);
     printf("El tiempo para la compilacion con threads es :\n");
     printf("=> %f\n",(double)parallelT/CLOCKS_PER_SEC);
-    for (i=0; i < rows; i++) {
-   //     printf("Los valores resultantes son %d\n",s[i]);
-    }
+    printf("Suma de toda la matriz: %d\n",acum);
 
     return 0;
     }
