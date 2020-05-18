@@ -5,7 +5,7 @@
 #include <math.h>
 
 
-#define M 1024
+#define M 1025
 #define N 512
 
 int rows, columns, a[M][N], s[M];
@@ -23,7 +23,7 @@ int main() {
     int i, j, *p, rc;
     int sum = 0;
     pthread_t th[M];
-    clock_t firstT, secondT;
+    clock_t parallelT, secuentialTstart, secuentialTend;
     int secuential[M];
 
     rows = 1024;
@@ -33,15 +33,15 @@ int main() {
             a[i][j] = rand() % 5;
         }
     }
-
-    /*printf("\nLa matriz es: \n");
+/*
+    printf("\nLa matriz es: \n");
     for(i=0; i < rows; i++) {
         for(j=0; j < columns; j++)
             printf("%d ", a[i][j]);
     printf("\n");
     }*/
     //threads
-    firstT=clock();
+    parallelT=clock();
     for (i=0; i < rows; i++) {
         p = malloc(sizeof(int));
         *p = i;
@@ -55,27 +55,24 @@ int main() {
     for (i=0; i < rows; i++) {
         pthread_join(th[i], NULL);
     }
-    firstT=clock()-firstT;
+    parallelT=clock()-parallelT;
     
-    secondT=clock();
+    secuentialTstart=clock();
     //secuencial
-    for (i = 0; i < N; i++)
-    {
-        for ( j = 0; j < M; j++)
-        {
+    for (i = 0; i < N; i++){
+        for ( j = 0; j < M; j++){
             secuential[j] = secuential[i]+a[j][i];
-        }
-        
+        }    
     }
-    secondT=clock()-secondT;
-    
+    secuentialTend=clock();
+    printf("Para matriz %dx%d\n",M,N);
     printf("El tiempo para la compilacion secuencial es :\n");
-    printf("- %ld\n",secondT);
+    printf("=> %f\n",(double)(secuentialTend-secuentialTstart)/CLOCKS_PER_SEC);
     printf("El tiempo para la compilacion con threads es :\n");
-    printf("- %ld\n",firstT);
-    /*for (i=0; i < rows; i++) {
-        printf("Los valores resultantes son %d\n",s[i]);
-    }*/
+    printf("=> %f\n",(double)parallelT/CLOCKS_PER_SEC);
+    for (i=0; i < rows; i++) {
+   //     printf("Los valores resultantes son %d\n",s[i]);
+    }
 
     return 0;
     }
