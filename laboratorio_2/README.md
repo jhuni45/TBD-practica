@@ -1,4 +1,4 @@
-# LEER Y EDITAR IMAGEN BMP
+# SUMAR UNA MATRIZ EN PARALELO
 ## Integrantes
 - Basurco Cayllahua, Eduardo Rolando
 - Chavez Cruz, Jhunior Kenyi
