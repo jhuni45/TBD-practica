@@ -3,6 +3,7 @@
 - Basurco Cayllahua, Eduardo Rolando
 - Chavez Cruz, Jhunior Kenyi
 - Humpire Cutipa, Hayde Luzmila
+- Larraondo Lamchog, Alejandro Jesús 
 
 ## Preliminares
 - Realizar el algoritmo para la lectura de una imagen BMP *SIN USAR LIBRERIAS*
