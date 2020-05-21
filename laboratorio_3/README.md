@@ -3,6 +3,7 @@
 - Basurco Cayllahua, Eduardo Rolando
 - Chavez Cruz, Jhunior Kenyi
 - Humpire Cutipa, Hayde Luzmila
+- Larraondo Lamchog, Alejandro Jesús 
 
 ## Preliminares
 - Realizar la suma de columnas de una matriz.
