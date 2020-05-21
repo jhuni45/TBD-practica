@@ -3,6 +3,7 @@
 - Basurco Cayllahua, Eduardo Rolando
 - Chavez Cruz, Jhunior Kenyi
 - Humpire Cutipa, Hayde Luzmila
+- Larraondo Lamchog, Alejandro Jesús 
 
 ## Preliminares
 - Realizar la suma de los elementos de una matriz de forma paralela y secuencial
