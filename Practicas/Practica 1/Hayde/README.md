@@ -22,15 +22,31 @@ $ pip install opencv-python==4.1.2.30
 - Compilación:
 
 ```terminal
-hayde@haydehumpire:~/Documentos/TCG$ python Transicion_DosImagenes.py  
+hayde@haydehumpire:~/Documentos/TCG$ python Ej2_TransicionDosImagenes.py
 ```
 
 - Salida:
 
-![](Salida/ejercicio5.gif)
+![](Salida/ejercicio3.gif)
 
 
 ### Ejercicio 3: Calcular el histograma unidimensional del nivel de gris de una imagen “a.jpg” en color. El resultado se escribe en salida debug.
+
+- Entrada: 
+
+![](Entrada/imagen3.jpg)
+
+- Compilación:
+
+```terminal
+hayde@haydehumpire:~/Documentos/TCG$ python Ej3_HistogramaUnidimensional.py
+```
+
+- Salida:
+
+![](Entrada/ejercicio3_1.png)
+![](Entrada/![](imagen3_2.png)
+
 
 ### Ejercicio 4: Calcular el histograma bidimensional de los canales (R,G) de una imagen “a.jpg” en color, con 64x64 celdas. El resultado se pinta en una imagen.
 
