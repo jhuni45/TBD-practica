@@ -13,11 +13,11 @@ $ pip install opencv-python==4.1.2.30
 
 ### Ejercicio 2: Crear una transición entre dos imágenes A y B, que deben tener el mismo tamaño y número de canales.
 - Entrada:
-![](https://github.com/jhuni45/TCG-Laboratorio/Practicas/Practica 1/Hayde/iamgen1.png)
-![](https://github.com/jhuni45/TCG-Laboratorio/Practicas/Practica 1/Hayde/iamgen2.png)
+![](imagen1.png)
+![](imagen2.png)
 
 - Salida:
-![](https://github.com/jhuni45/TCG-Laboratorio/Practicas/Practica 1/Hayde/ejercicio5.gif)
+![](ejercicio5.gif)
 
 - Compilación y ejecución de código
 ```terminal
