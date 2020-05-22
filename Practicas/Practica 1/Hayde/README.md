@@ -12,16 +12,20 @@ $ pip install opencv-python==4.1.2.30
 ### Ejercicio 1: Suma ponderada de dos imágenes
 
 ### Ejercicio 2: Crear una transición entre dos imágenes A y B, que deben tener el mismo tamaño y número de canales.
+
 - Entrada:
+
 ![](imagen1.jpg)
 ![](imagen2.jpg)
 
 - Compilación:
+
 ```terminal
 $ python Transicion_DosImagenes.py 
 ```
 
 - Salida:
+
 ![](ejercicio5.gif)
 
 
