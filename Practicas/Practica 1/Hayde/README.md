@@ -51,3 +51,18 @@ hayde@haydehumpire:~/Documentos/TCG$ python Ej3_HistogramaUnidimensional.py
 ### Ejercicio 4: Histograma bidimensional de los canales (R,G) de una imagen “a.jpg” en color, con 64x64 celdas. 
 
 ### Ejercicio 5: Ecualización conjunta del histograma a una imagen “a.jpg” en color, usando calcHist y LUT.
+
+- Entrada: 
+
+![](Entrada/imagen4.jpg)
+
+- Compilación:
+
+```terminal
+hayde@haydehumpire:~/Documentos/TCG$ python python Ej5_Ecualizacion_Imagen.py 
+```
+
+- Salida:
+
+![](Salida/resultado05.png)
+
