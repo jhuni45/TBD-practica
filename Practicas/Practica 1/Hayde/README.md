@@ -21,7 +21,7 @@ $ pip install opencv-python==4.1.2.30
 - Compilación:
 
 ```terminal
-$ python Transicion_DosImagenes.py 
+hayde@haydehumpire:~/Documentos/TCG$ python Transicion_DosImagenes.py  
 ```
 
 - Salida:
