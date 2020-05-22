@@ -44,8 +44,8 @@ hayde@haydehumpire:~/Documentos/TCG$ python Ej3_HistogramaUnidimensional.py
 
 - Salida:
 
-![](Entrada/ejercicio3_1.png)
-![](Entrada/imagen3_2.png)
+![](Salida/ejercicio3_1.png)
+![](Salida/imagen3_2.png)
 
 
 ### Ejercicio 4: Calcular el histograma bidimensional de los canales (R,G) de una imagen “a.jpg” en color, con 64x64 celdas. El resultado se pinta en una imagen.
