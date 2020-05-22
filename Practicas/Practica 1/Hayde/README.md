@@ -16,8 +16,8 @@ $ pip install opencv-python==4.1.2.30
 
 - Entrada: Imagen A y Imagen B
 
-![](imagen1.jpg)
-![](imagen2.jpg)
+![](Entrada/imagen1.jpg)
+![](Entrada/imagen2.jpg)
 
 - Compilación:
 
@@ -27,7 +27,7 @@ hayde@haydehumpire:~/Documentos/TCG$ python Transicion_DosImagenes.py
 
 - Salida:
 
-![](ejercicio5.gif)
+![](Salida/ejercicio5.gif)
 
 
 ### Ejercicio 3: Calcular el histograma unidimensional del nivel de gris de una imagen “a.jpg” en color. El resultado se escribe en salida debug.
