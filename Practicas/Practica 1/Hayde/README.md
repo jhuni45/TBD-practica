@@ -13,7 +13,7 @@ $ pip install opencv-python==4.1.2.30
 
 ### Ejercicio 2: Crear una transición entre dos imágenes A y B, que deben tener el mismo tamaño y número de canales.
 
-- Entrada:
+- Entrada: Imagen A y Imagen B
 
 ![](imagen1.jpg)
 ![](imagen2.jpg)
