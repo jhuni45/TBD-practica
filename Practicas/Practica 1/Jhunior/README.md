@@ -47,7 +47,7 @@ $ ./DisplayImage <image> <image>
 #### Imagen de entrada 
 ![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%201/Jhunior/pokachu.png)
 #### Salida
-![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%201/Jhunior/salidas/salida_bihistograma.gif)
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%201/Jhunior/salidas/salida_gamma.gif)
 
 
 ### Ejercicio 5
