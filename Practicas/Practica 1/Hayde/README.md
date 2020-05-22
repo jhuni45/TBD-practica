@@ -4,7 +4,6 @@
 
 ## Requerimientos
 ```terminal
-$ apt install python
 $ pip install numpy
 $ pip install opencv-python==4.1.2.30
 ```
@@ -29,6 +28,20 @@ hayde@haydehumpire:~/Documentos/TCG$ python Ej2_TransicionDosImagenes.py
 
 
 ### Ejercicio 2: Transformación gamma
+- Entrada: 
+
+![](Entrada/imagen2.jpg)
+
+- Compilación:
+
+```terminal
+hayde@haydehumpire:~/Documentos/TCG$ python python Ej2_TransformacionGamma.py 
+```
+
+- Salida:
+
+![](Salida/resultado02.png)
+
 
 ### Ejercicio 3: Histograma unidimensional del nivel de gris de una imagen “a.jpg” en color. 
 
