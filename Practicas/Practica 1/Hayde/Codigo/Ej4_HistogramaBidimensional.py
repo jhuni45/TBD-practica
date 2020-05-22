@@ -1,11 +1,18 @@
 import cv2 as cv
+from matplotlib import pyplot as plt
+import numpy as np
 
-# Cargamos las Imagenes
-IMAGEN_A = cv.imread("imagen1.jpg", 1); 
-IMAGEN_B = cv.imread("imagen2.jpg", 1); 
+# Cargamos la Imagen
+IMAGEN_A = cv.imread("imagen1.jpg", 1)
+grises = cv.cvtColor(IMAGEN_A, cv.COLOR_BGR2GRAY) 
+cv.imshow("Imagen en Gris", grises)
+cv.waitKey(0)
 
-# Transicion
-for i in range (0,100):
-    res = cv.addWeighted(IMAGEN_A, i/100.0, IMAGEN_B, 1-i/100.0, 0.0)
-    cv.imshow("Transicion", res)
-    cv.waitKey(100)
+# Histograma
+histograma = cv.calcHist(images = [grises], channels = [0], mask = None, histSize = [256], ranges = [0, 256])
+
+# Salida
+plt.title("Histograma - Bidimensional")
+plt.plot(histograma)
+plt.xlim([0,255])
+plt.show()
