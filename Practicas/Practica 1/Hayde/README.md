@@ -10,9 +10,7 @@ $ pip install opencv-python==4.1.2.30
 ```
 ## EJERCICIOS
 
-### Ejercicio 1: Suma ponderada de dos imágenes
-
-### Ejercicio 2: Crear una transición entre dos imágenes A y B, que deben tener el mismo tamaño y número de canales.
+### Ejercicio 1: Crear una transición entre dos imágenes A y B, que deben tener el mismo tamaño y número de canales.
 
 - Entrada: Imagen A y Imagen B
 
@@ -29,6 +27,8 @@ hayde@haydehumpire:~/Documentos/TCG$ python Ej2_TransicionDosImagenes.py
 
 ![](Salida/ejercicio3.gif)
 
+
+### Ejercicio 2: Transformación gamma
 
 ### Ejercicio 3: Calcular el histograma unidimensional del nivel de gris de una imagen “a.jpg” en color. El resultado se escribe en salida debug.
 
