@@ -10,7 +10,7 @@ $ pip install opencv-python==4.1.2.30
 ```
 ## EJERCICIOS
 
-### Ejercicio 1: Crear una transición entre dos imágenes A y B, que deben tener el mismo tamaño y número de canales.
+### Ejercicio 1: Transición entre dos imágenes A y B (mismo tamaño y número de canales).
 
 - Entrada: Imagen A y Imagen B
 
@@ -30,7 +30,7 @@ hayde@haydehumpire:~/Documentos/TCG$ python Ej2_TransicionDosImagenes.py
 
 ### Ejercicio 2: Transformación gamma
 
-### Ejercicio 3: Calcular el histograma unidimensional del nivel de gris de una imagen “a.jpg” en color. El resultado se escribe en salida debug.
+### Ejercicio 3: Histograma unidimensional del nivel de gris de una imagen “a.jpg” en color. 
 
 - Entrada: 
 
@@ -48,6 +48,6 @@ hayde@haydehumpire:~/Documentos/TCG$ python Ej3_HistogramaUnidimensional.py
 ![](Salida/imagen3_2.png)
 
 
-### Ejercicio 4: Calcular el histograma bidimensional de los canales (R,G) de una imagen “a.jpg” en color, con 64x64 celdas. El resultado se pinta en una imagen.
+### Ejercicio 4: Histograma bidimensional de los canales (R,G) de una imagen “a.jpg” en color, con 64x64 celdas. 
 
-### Ejercicio 5: Aplicar una ecualización conjunta del histograma a una imagen “a.jpg” en color, usando calcHist y LUT.
+### Ejercicio 5: Ecualización conjunta del histograma a una imagen “a.jpg” en color, usando calcHist y LUT.
