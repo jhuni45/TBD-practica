@@ -26,6 +26,58 @@
 !pip install git+git://github.com/andreinechaev/nvcc4jupyter.git
 %load_ext nvcc_plugin
 ```
+## Kernel con Memoria Compartida
+- Es cientos de veces más rápida que la memoria global.
+- Puede usarse como una especie de caché para reducir los accesos a memoria global.
+- Permite que los hilos de un mismo bloque puedan cooperar.
+- Se puede usar para evitar accesos no coalesced a la memoria global:
+  – Los datos se guardan en forma intermedia en la memoria compartida.
+  – Se reordena el acceso a los datos para que cuando se copien de memoria compartida a memoria global el acceso sea coalesced.
+
+### Hagamos un kernel (kernel 5) que utilice memoria compartida para sumar matrices 
+```cuda
+__shared __float Nds[DIMBLOCKX];
+__syncthreads(); 
+```
+
+### Lanzamiento del kernel memoria compartida
+```cuda
+// configuración de la ejecución
+int chunk = 32;
+dim3 tamGrid(1, N); //Grid dimensión
+dim3 tamBlock(M/chunk,1,1); //Block dimensión
+
+// lanzamiento del kernel
+SumaColMatrizKernel<<<tamGrid, tamBlock>>>(M, Md, Nd);; 
+```
+### Kernel 5 memoria compartida
+```cuda
+// Lanzamiento del kernel 5 con memoria compartida  
+#define DIMBLOCKX 32
+__global__ void SumaColMatrizKernel_5(int M, float* Md, float* Nd)
+{
+    __shared__ float Nds[DIMBLOCKX];
+    int Pvalue = 0;
+    int columna = blockIdx.x;
+    int pasos = M / blockDim.x;
+    int posIni = columna * M + threadIdx.x * pasos;
+    for (int k = 0; k < pasos; ++k) {
+        Pvalue = Pvalue + Md[posIni + k];
+    }
+    atomicAdd(&(Nd[columna]), Pvalue);
+    // Nds[threadIdx.x] = Pvalue;
+
+    __syncthreads();
+    if (threadIdx.x == 0)
+    {
+        for (int i = 1; i < blockDim.x; ++i) {
+            Nds[0] = Nds[0] + Nds[i];
+        }
+        atomicAdd(&(Nd[blockIdx.y]), Nds[0]);
+        // Nd[blockIdx.y] = Nds[0];
+    }
+}
+```
 
 ## Compilación y ejecución de código
 
@@ -33,4 +85,4 @@
 $ gcc laboratorio2.c -lpthread -o laboratorio2
 $ ./laboratorio2
 ```
-### Para matriz de 1024x512
+### Resultado para matriz de 1024x512
