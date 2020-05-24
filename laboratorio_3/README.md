@@ -10,7 +10,7 @@
   - Resultado de la suma columnas de una matriz.
   
 ## Requerimientos
-### Initialise CUDA environment on Google Colab
+### Inicializar el entorno CUDA en Google Colab
 ```code
 !apt-get --purge remove cuda nvidia* libnvidia-*
 !dpkg -l | grep cuda- | awk '{print $2}' | xargs -n1 dpkg --purge
