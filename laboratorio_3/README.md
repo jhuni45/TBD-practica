@@ -10,6 +10,15 @@
   - Resultado de la suma columnas de una matriz.
   
 ## Requerimientos
+
+## Kernel con Memoria Compartida
+- Es cientos de veces más rápida que la memoria global.
+- Puede usarse como una especie de caché para reducir los accesos a memoria global.
+- Permite que los hilos de un mismo bloque puedan cooperar.
+- Se puede usar para evitar accesos no coalesced a la memoria global:
+  – Los datos se guardan en forma intermedia en la memoria compartida.
+  – Se reordena el acceso a los datos para que cuando se copien de memoria compartida a memoria global el acceso sea coalesced.
+
 ### Inicializar el entorno CUDA en Google Colab
 ```cuda
 !apt-get --purge remove cuda nvidia* libnvidia-*
@@ -26,13 +35,6 @@
 !pip install git+git://github.com/andreinechaev/nvcc4jupyter.git
 %load_ext nvcc_plugin
 ```
-## Kernel con Memoria Compartida
-- Es cientos de veces más rápida que la memoria global.
-- Puede usarse como una especie de caché para reducir los accesos a memoria global.
-- Permite que los hilos de un mismo bloque puedan cooperar.
-- Se puede usar para evitar accesos no coalesced a la memoria global:
-  – Los datos se guardan en forma intermedia en la memoria compartida.
-  – Se reordena el acceso a los datos para que cuando se copien de memoria compartida a memoria global el acceso sea coalesced.
 
 ### Hagamos un kernel (kernel 5) que utilice memoria compartida para sumar matrices 
 ```cuda
@@ -82,7 +84,7 @@ __global__ void SumaColMatrizKernel_5(int M, float* Md, float* Nd)
 ## Compilación y ejecución de código
 
 ```terminal
-$ gcc laboratorio2.c -lpthread -o laboratorio2
-$ ./laboratorio2
+$ nvcc SumColMatriz.cu 
+$ ./a.out
 ```
 ### Resultado para matriz de 1024x512
