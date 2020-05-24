@@ -82,6 +82,7 @@ __global__ void SumaColMatrizKernel_5(int M, float* Md, float* Nd)
 ```
 
 ## Compilación y ejecución de código
+### En ubuntu:
 
 ```terminal
 $ nvcc SumColMatriz.cu 
