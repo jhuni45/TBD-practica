@@ -6,8 +6,8 @@
 - Larraondo Lamchog, Alejandro Jesús 
 
 ## Preliminares
-- Realizar la suma de columnas de una matriz.
-  - Resultado de la suma columnas de una matriz.
+- Realizar la suma de columnas de una matriz que utilice memoria compartida..
+  - Resultado de la suma columnas de una matriz utilizando memoria compartida.
   
 ## Requerimientos
 
@@ -15,6 +15,7 @@
 - Es cientos de veces más rápida que la memoria global.
 - Puede usarse como una especie de caché para reducir los accesos a memoria global.
 - Permite que los hilos de un mismo bloque puedan cooperar.
+- Dimensión pequeña.
 - Se puede usar para evitar accesos no coalesced a la memoria global:
   - Los datos se guardan en forma intermedia en la memoria compartida.
   - Se reordena el acceso a los datos para que cuando se copien de memoria compartida a memoria global el acceso sea coalesced.
@@ -88,4 +89,30 @@ __global__ void SumaColMatrizKernel_5(int M, float* Md, float* Nd)
 $ nvcc SumColMatriz.cu 
 $ ./a.out
 ```
-## Resultado para matriz de 1024x512
+### Resultado para matriz de 1024x512
+
+
+## Reduce
+- Reducción en paralelo de la suma.
+- Los datos se copian inicialmente de la memoria global a la memoria compartida.
+- Solamente se realiza la primera etapa de la reducción. 
+
+### Para declarar la memoria compartida se puede usar una constante:
+```cuda
+#define CANT_HILOS 128
+__global__ void reduction(float * output, float * input) {
+ __shared__ float intermedio[CANT_HILOS];
+ …
+};
+reduction <<<N_BLOCK,CANT_HILOS>>> (output,input);
+```
+
+### Para declarar la memoria compartida se puede hacer en forma dinámica con extern:
+```cuda
+__global__ void reduction(float * output, float * input) {
+ extern __shared__ float intermedio[];
+ …
+};
+reduction <<<N_BLOCK,CANT_HILOS,
+ CANT_HILOS*sizeof(float)>>> (output,input);
+```
