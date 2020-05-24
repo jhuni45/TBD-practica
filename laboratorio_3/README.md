@@ -11,7 +11,7 @@
   
 ## Requerimientos
 
-## Kernel con Memoria Compartida
+### Kernel con Memoria Compartida
 - Es cientos de veces más rápida que la memoria global.
 - Puede usarse como una especie de caché para reducir los accesos a memoria global.
 - Permite que los hilos de un mismo bloque puedan cooperar.
@@ -20,7 +20,7 @@
   – Se reordena el acceso a los datos para que cuando se copien de memoria compartida a memoria global el acceso sea coalesced.
 
 ### Inicializar el entorno CUDA en Google Colab
-```cuda
+```codigo
 !apt-get --purge remove cuda nvidia* libnvidia-*
 !dpkg -l | grep cuda- | awk '{print $2}' | xargs -n1 dpkg --purge
 !apt-get remove cuda-*
