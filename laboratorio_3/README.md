@@ -16,8 +16,8 @@
 - Puede usarse como una especie de caché para reducir los accesos a memoria global.
 - Permite que los hilos de un mismo bloque puedan cooperar.
 - Se puede usar para evitar accesos no coalesced a la memoria global:
-  – Los datos se guardan en forma intermedia en la memoria compartida.
-  – Se reordena el acceso a los datos para que cuando se copien de memoria compartida a memoria global el acceso sea coalesced.
+  - Los datos se guardan en forma intermedia en la memoria compartida.
+  - Se reordena el acceso a los datos para que cuando se copien de memoria compartida a memoria global el acceso sea coalesced.
 
 ### Inicializar el entorno CUDA en Google Colab
 ```codigo
@@ -36,7 +36,7 @@
 %load_ext nvcc_plugin
 ```
 
-### Hagamos un kernel (kernel 5) que utilice memoria compartida para sumar matrices 
+## Hagamos un kernel (kernel 5) que utilice memoria compartida para sumar matrices 
 ```cuda
 __shared __float Nds[DIMBLOCKX];
 __syncthreads(); 
@@ -88,4 +88,4 @@ __global__ void SumaColMatrizKernel_5(int M, float* Md, float* Nd)
 $ nvcc SumColMatriz.cu 
 $ ./a.out
 ```
-### Resultado para matriz de 1024x512
+## Resultado para matriz de 1024x512
