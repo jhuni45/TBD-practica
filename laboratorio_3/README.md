@@ -11,7 +11,7 @@
   
 ## Requerimientos
 ### Inicializar el entorno CUDA en Google Colab
-```code
+```cuda
 !apt-get --purge remove cuda nvidia* libnvidia-*
 !dpkg -l | grep cuda- | awk '{print $2}' | xargs -n1 dpkg --purge
 !apt-get remove cuda-*
@@ -42,13 +42,13 @@ __syncthreads();
 
 ### Lanzamiento del kernel memoria compartida
 ```cuda
-// configuración de la ejecución
-int chunk = 32;
-dim3 tamGrid(1, N); //Grid dimensión
-dim3 tamBlock(M/chunk,1,1); //Block dimensión
-
-// lanzamiento del kernel
-SumaColMatrizKernel<<<tamGrid, tamBlock>>>(M, Md, Nd);; 
+/ Lanzamiento del kernel 5 con memoria compartida
+    /*--------- KERNEL 5 ---------*/
+    /* configuración de la ejecución */
+    int chunk = 32;
+    dim3 tamGrid(N, 1); //Grid dimensión
+    dim3 tamBlock(M / chunk, 1, 1); //Block dimensión
+    SumaColMatrizKernel_5 <<<tamGrid, tamBlock >>> (M, Md, Nd); /* lanzamiento del kernel */
 ```
 ### Kernel 5 memoria compartida
 ```cuda
