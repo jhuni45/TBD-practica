@@ -115,6 +115,5 @@ __global__ void reduction(float * output, float * input) {
  extern __shared__ float intermedio[];
  …
 };
-reduction <<<N_BLOCK,CANT_HILOS,
- CANT_HILOS*sizeof(float)>>> (output,input);
+reduction <<<N_BLOCK, CANT_HILOS, CANT_HILOS*sizeof(float)>>> (output,input);
 ```
