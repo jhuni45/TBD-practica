@@ -1,4 +1,4 @@
-# SUMA DE COLUMNAS DE UNA MATRIZ
+# SUMA DE LOS VALORES DE UNA MATRIZ EN GPU
 ## Integrantes
 - Basurco Cayllahua, Eduardo Rolando
 - Chavez Cruz, Jhunior Kenyi
@@ -6,8 +6,8 @@
 - Larraondo Lamchog, Alejandro Jesús 
 
 ## Preliminares
-- Realizar la suma de columnas de una matriz que utilice memoria compartida..
-  - Resultado de la suma columnas de una matriz utilizando memoria compartida.
+- Suma de los valores de una matriz en GPU.
+  - Resultado de la suma de los valores de una matriz en GPU.
   
 ## Requerimientos
 
