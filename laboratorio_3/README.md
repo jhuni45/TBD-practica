@@ -21,6 +21,7 @@
   - Se reordena el acceso a los datos para que cuando se copien de memoria compartida a memoria global el acceso sea coalesced.
 
 ### Inicializar el entorno CUDA en Google Colab
+Ejecutar un programa Cuda para tarjetas Nvidia via Online con ayuda de una maquina virtual. Si no tienes una pc  con una tarjeta de video Nvidia para realizar programacion paralela, google colab nos brinda una maquina virtual en su plataforma Google Colab.
 ```codigo
 !apt-get --purge remove cuda nvidia* libnvidia-*
 !dpkg -l | grep cuda- | awk '{print $2}' | xargs -n1 dpkg --purge
@@ -37,31 +38,32 @@
 %load_ext nvcc_plugin
 ```
 
-## Hagamos un kernel (kernel 5) que utilice memoria compartida para sumar matrices 
+## Hagamos un kernel (kernel 6) que utilice memoria compartida  y memoria bidimensional para sumar matrices 
 ```cuda
 __shared __float Nds[DIMBLOCKX];
 __syncthreads(); 
 ```
 
-### Lanzamiento del kernel memoria compartida
+### Lanzamiento del kernel 6 memoria compartida y memoria bidimensional
 ```cuda
-/ Lanzamiento del kernel 5 con memoria compartida
-    /*--------- KERNEL 5 ---------*/
+// Lanzamiento del kernel 6 con memoria compartida y memoria bidimensional
+    /*--------- KERNEL 6 ---------*/
     /* configuración de la ejecución */
-    int chunk = 32;
-    dim3 tamGrid(N, 1); //Grid dimensión
-    dim3 tamBlock(M / chunk, 1, 1); //Block dimensión
-    SumaColMatrizKernel_5 <<<tamGrid, tamBlock >>> (M, Md, Nd); /* lanzamiento del kernel */
+    int chunk = 32; // Se asume M y N múltiplos de 32
+    dim3 tamGrid(N / chunk, 1); //Grid dimensión
+    dim3 tamBlock(M / chunk, chunk, 1); //Block dimensión
+    SumaColMatrizKernel_6 <<<tamGrid, tamBlock >>> (M, N, Md, Nd); /* lanzamiento del kernel */
 ```
-### Kernel 5 memoria compartida
+### Kernel 6 memoria compartida  y memoria bidimensional
 ```cuda
-// Lanzamiento del kernel 5 con memoria compartida  
+// Lanzamiento del kernel 6 con memoria compartida y memoria bidimensional
 #define DIMBLOCKX 32
-__global__ void SumaColMatrizKernel_5(int M, float* Md, float* Nd)
+__global__ void SumaColMatrizKernel_6(int M, int N, float* Md, float* Nd)
 {
     __shared__ float Nds[DIMBLOCKX];
+    // Pvalue es usado para el valor intermedio
     int Pvalue = 0;
-    int columna = blockIdx.x;
+    int columna = blockIdx.y * (N / gridDim.x) + threadIdx.x;
     int pasos = M / blockDim.x;
     int posIni = columna * M + threadIdx.x * pasos;
     for (int k = 0; k < pasos; ++k) {
