@@ -6,7 +6,7 @@
 - Larraondo Lamchog, Alejandro Jesús 
 
 ## Preliminares
-- Suma de los valores de una matriz en GPU.
+- Programar en GPU la suma de las columnas de una matriz usar memoria compartida y distribución de los hilos de forma bidimensional.
   - Resultado de la suma de los valores de una matriz en GPU.
   
 ## Requerimientos
