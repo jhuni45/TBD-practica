@@ -93,10 +93,10 @@ $ ./a.out
 ```
 ### Resultado para matriz de 1024x512
 #### Kernel 5 usando solo memoria compartida
-![](https://github.com/jhuni45/TCG-Laboratorio/laboratorio_3/imagenes/resultado1.PNG)
+![](imagenes/resultado1.PNG)
 
 #### Kernel 6 usando solo memoria compartida y dimensional
-![](https://github.com/jhuni45/TCG-Laboratorio/laboratorio_3/imagenes/resultado2.PNG)
+![](imagenes/resultado2.PNG)
 
 ## Reduce
 - Reducción en paralelo de la suma.
