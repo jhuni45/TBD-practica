@@ -85,12 +85,6 @@ __global__ void SumaColMatrizKernel_6(int M, int N, float* Md, float* Nd)
 ```
 
 ## Compilación y ejecución de código
-### En ubuntu:
-
-```terminal
-$ nvcc SumColMatriz.cu 
-$ ./a.out
-```
 ### Resultado para matriz de 1024x512
 #### Kernel 5 usando solo memoria compartida
 ![](imagenes/resultado1.PNG)
