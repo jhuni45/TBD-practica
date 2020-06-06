@@ -60,7 +60,6 @@ __syncthreads();
 #define DIMBLOCKX 32
 __global__ void SumaColMatrizKernel_6(int M, float* Md, float* Nd)
 {
-    // Pvalue es usado para el valor intermedio
     float Pvalue = 0;
     int columna = threadIdx.x;
     int posIni = columna*M;
