@@ -49,39 +49,27 @@ __syncthreads();
 // Lanzamiento del kernel 6 con memoria compartida y memoria bidimensional
     /*--------- KERNEL 6 ---------*/
     /* configuración de la ejecución */
-    int chunk = 32; // Se asume M y N múltiplos de 32
-    dim3 tamGrid(N / chunk, 1); //Grid dimensión
-    dim3 tamBlock(M / chunk, chunk, 1); //Block dimensión
-    SumaColMatrizKernel_6 <<<tamGrid, tamBlock >>> (M, N, Md, Nd); /* lanzamiento del kernel */
+    int chunk = 32;
+    dim3 tamGrid(1,1);
+    dim3 tamBlock(N,1,1);
+    SumaColMatrizKernel_6 <<<tamGrid, tamBlock>>>(M, Md, Nd);
 ```
 ### Kernel 6 memoria compartida  y memoria bidimensional
 ```cuda
 // Lanzamiento del kernel 6 con memoria compartida y memoria bidimensional
 #define DIMBLOCKX 32
-__global__ void SumaColMatrizKernel_6(int M, int N, float* Md, float* Nd)
+__global__ void SumaColMatrizKernel_6(int M, float* Md, float* Nd)
 {
-    __shared__ float Nds[DIMBLOCKX];
     // Pvalue es usado para el valor intermedio
-    int Pvalue = 0;
-    int columna = blockIdx.y * (N / gridDim.x) + threadIdx.x;
-    int pasos = M / blockDim.x;
-    int posIni = columna * M + threadIdx.x * pasos;
-    for (int k = 0; k < pasos; ++k) {
-        Pvalue = Pvalue + Md[posIni + k];
+    float Pvalue = 0;
+    int columna = threadIdx.x;
+    int posIni = columna*M;
+    for (int k = 0; k < M; ++k) {
+      Pvalue = Pvalue + Md[posIni+k];
     }
-    atomicAdd(&(Nd[columna]), Pvalue);
-    // Nds[threadIdx.x] = Pvalue;
+    Nd[columna] = Pvalue;
+  }
 
-    __syncthreads();
-    if (threadIdx.x == 0)
-    {
-        for (int i = 1; i < blockDim.x; ++i) {
-            Nds[0] = Nds[0] + Nds[i];
-        }
-        atomicAdd(&(Nd[blockIdx.y]), Nds[0]);
-        // Nd[blockIdx.y] = Nds[0];
-    }
-}
 ```
 
 ## Compilación y ejecución de código
