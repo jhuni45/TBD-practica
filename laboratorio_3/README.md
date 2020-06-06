@@ -90,7 +90,7 @@ __global__ void SumaColMatrizKernel_6(int M, int N, float* Md, float* Nd)
 ![](imagenes/resultado1.PNG)
 
 #### Kernel 6 usando solo memoria compartida y dimensional
-![](imagenes/resultado2.PNG)
+![](imagenes/cudaresultado.PNG)
 
 ## Reduce
 - Reducción en paralelo de la suma.
