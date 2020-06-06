@@ -70,9 +70,6 @@ __global__ void SumaColMatrizKernel_6(int M, float* Md, float* Nd){
 ### Resultado para matriz de 1024x512
 Resultados en Colab: https://colab.research.google.com/drive/1y7XRU1DEryvOLZKcgAQ9HkLEKGQRgjZl?usp=sharing
 
-#### Kernel 5 usando solo memoria compartida
-![](imagenes/resultado1.PNG)
-
 #### Kernel 6 usando solo memoria compartida y dimensional
 ![](imagenes/Resultado3.PNG)
 
