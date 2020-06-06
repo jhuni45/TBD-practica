@@ -98,36 +98,21 @@ __global__ void SumaColMatrizKernel_5(int M, float* Md, float* Nd)
 
 // Lanzamiento del kernel 6 con memoria compartida y memoria bidimensional
 #define DIMBLOCKX 32
-__global__ void SumaColMatrizKernel_6(int M, int N, float* Md, float* Nd)
+__global__ void SumaColMatrizKernel_6(int M, float* Md, float* Nd)
 {
-    __shared__ float Nds[DIMBLOCKX];
     // Pvalue es usado para el valor intermedio
-    int Pvalue = 0;
-    int columna = blockIdx.y * (N / gridDim.x) + threadIdx.x;
-    int pasos = M / blockDim.x;
-    int posIni = columna * M + threadIdx.x * pasos;
-    for (int k = 0; k < pasos; ++k) {
-        Pvalue = Pvalue + Md[posIni + k];
+    float Pvalue = 0;
+    int columna = threadIdx.x;
+    int posIni = columna*M;
+    for (int k = 0; k < M; ++k) {
+      Pvalue = Pvalue + Md[posIni+k];
     }
-    atomicAdd(&(Nd[columna]), Pvalue);
-    // Nds[threadIdx.x] = Pvalue;
-
-    __syncthreads();
-    if (threadIdx.x == 0)
-    {
-        for (int i = 1; i < blockDim.x; ++i) {
-            Nds[0] = Nds[0] + Nds[i];
-        }
-        atomicAdd(&(Nd[blockIdx.y]), Nds[0]);
-        // Nd[blockIdx.y] = Nds[0];
-    }
-}
-
+    Nd[columna] = Pvalue;
+  }
 
 void SumaColMatriz(int M, int N, float* Mh, float* Nh)
 {
-    int size = M * N * sizeof(int);
-    int size2 = N * sizeof(float);
+    int size = M*N*sizeof(float), size2=N*sizeof(float);
     float* Md, * Nd;
 
     // Asignar en dispositivo
@@ -135,7 +120,7 @@ void SumaColMatriz(int M, int N, float* Mh, float* Nh)
     cudaMalloc(&Nd, size2);
 
     // Inicializo matrices en el dispositivo
-    cudaMemcpy(Md, Mh, size, cudaMemcpyHostToDevice);
+    cudaMemcpy(Md, Mh, size,  cudaMemcpyHostToDevice);
     cudaMemset(Nd, 0, size2);
     // Invocar el kernel que suma en GPU
 
@@ -179,44 +164,29 @@ void SumaColMatriz(int M, int N, float* Mh, float* Nh)
     // Lanzamiento del kernel 6 con memoria compartida y memoria bidimensional
     /*--------- KERNEL 6 ---------*/
     /* configuración de la ejecución */
-    int chunk = 32; // Se asume M y N múltiplos de 32
-    dim3 tamGrid(N / chunk, 1); //Grid dimensión
-    dim3 tamBlock(M / chunk, chunk, 1); //Block dimensión
-    SumaColMatrizKernel_6 <<<tamGrid, tamBlock >>> (M, N, Md, Nd); /* lanzamiento del kernel */
+    int chunk = 32;
+    dim3 tamGrid(1,1);
+    dim3 tamBlock(N,1,1);
+    SumaColMatrizKernel_6 <<<tamGrid, tamBlock>>>(M, Md, Nd);
 
     /*--------- TRAER RESULTADO ---------*/
     // Traer resultado;
     cudaMemcpy(Nh, Nd, size2, cudaMemcpyDeviceToHost);
+    for (int i=0; i<N; i++)
+      std::cout<<Nh[i]<<" ";
     cudaFree(Md); // Free matrices en device
     cudaFree(Nd); // Free matrices en device
 }
 
-int main(void){
-    int M = 1024;
-    int N = 512;
-    float** matriz;
-    matriz = new float* [M];
-    // En la posicion cero, se colaca todo el vector
-    matriz[0] = new float[M * N];
+int main(){
+    int M =1024;
+    int N =512;
+    float *Mh = new float[M*N];
+    float *Nh = new float[N];
+    
+    for (int i=0; i<M; i++)
+      for (int j=0; j<N; j++)
+        Mh[i*N+j] = 1;
 
-    for (int i = 1; i < M; i++) {
-        matriz[i] = &matriz[0][i*N];
-    }
-
-    for (int i = 0; i < M; i++) {
-        for (int j = 0; j < N; j++) {
-            matriz[i][j] = 1;
-        }
-    }
-
-    float* Nh;
-    Nh = new float[N];
-
-    SumaColMatriz(M, N, matriz[0], Nh);
-    printf("\n Resultados usando memoria compartida y bidimensional: \n ");
-    for (int j = 0; j < N; j++){
-        printf("%f ", Nh[j]);
-    }
-
-    return 0;
+    SumaColMatriz(M,N,Mh,Nh);
 }
