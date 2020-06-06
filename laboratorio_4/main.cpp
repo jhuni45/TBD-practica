@@ -17,10 +17,9 @@ void image_binarization(uchar4* const d_rgbaImage,
                         unsigned char* const d_outputImage, 
                         size_t numRows, size_t numCols, int threshold);
 
-
-void operator_not(unsigned char* const d_inputImage, 
-                   unsigned char* const d_outputImage, 
-                   size_t numRows, size_t numCols);
+void operator_not_image(unsigned char* const d_inputImage, 
+                  unsigned char* const d_outputImage, 
+                  size_t numRows, size_t numCols);
 
 
 // Incluye las definiciones de las funciones de arriba
@@ -65,7 +64,7 @@ int main(int argc, char **argv) {
                         &d_binaryImage, &d_notImage,
                         input_file);
 
-          operator_not(d_binaryImage, d_notImage, numRows(), numCols());
+          operator_not_image(d_binaryImage, d_notImage, numRows(), numCols());
 
           size_t numPixels = numRows()*numCols();
           checkCudaErrors(cudaMemcpy(h_notImage, d_notImage, sizeof(unsigned char) * numPixels, cudaMemcpyDeviceToHost));

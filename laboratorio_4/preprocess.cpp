@@ -176,8 +176,8 @@ void preProcessNot(unsigned char **inputImage,  unsigned char **outputImage,
   checkCudaErrors(cudaFree(0));
 
   cv::Mat image;
-  image = cv::imread(filename.c_str(), 0);
-  
+  image = cv::imread(filename.c_str(), CV_LOAD_IMAGE_GRAYSCALE);
+  imageMat = image;
   
   if (image.empty()) {
     std::cerr << "No se pudo abrir el archivo: " << filename << std::endl;
@@ -190,7 +190,7 @@ void preProcessNot(unsigned char **inputImage,  unsigned char **outputImage,
 
   //This shouldn't ever happen given the way the images are created
   //at least based upon my limited understanding of OpenCV, but better to check
-  if (!imageOutputMat.isContinuous()) {
+  if (!image.isContinuous() || !imageOutputMat.isContinuous()) {
     std::cerr << "Images aren't continuous!! Exiting." << std::endl;
     exit(1);
   }

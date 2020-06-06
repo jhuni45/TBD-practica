@@ -20,13 +20,13 @@ void operator_not_kernel(const unsigned char* const inputImage,
    
     //Cambiamos si es 0:255 , si es 255:0
 
-    //outputImage[i] = ( inputImage[i] == 0 ) ? 255 : 0;
+    outputImage[i] = ( inputImage[i] == 0 ) ? 255 : 0;
 
   }
   
 }
 
-void operator_not(unsigned char* const d_inputImage, 
+void operator_not_image(unsigned char* const d_inputImage, 
                   unsigned char* const d_outputImage, 
                   size_t numRows, size_t numCols)
 {
