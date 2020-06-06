@@ -175,8 +175,8 @@ void SumaColMatriz(int M, int N, float * Mh, float*  Nh){
 int main(){
     int M =1024;
     int N =512;
-    float *Mh = new float[M*N];//matriz host
-    float *Nh = new float[N];//matriz host
+    float *Mh = new float[M*N];
+    float *Nh = new float[N];
     for (int i=0; i<M; i++)
       for (int j=0; j<N; j++)
         Mh[i*N+j] = 1;
