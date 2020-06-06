@@ -13,6 +13,16 @@ void image_addition(uchar4* const d_rgbaImage,
                     uchar4* const d_outputImage, 
                     size_t numRows, size_t numCols, float percent);
 
+void image_binarization(uchar4* const d_rgbaImage, 
+                        unsigned char* const d_outputImage, 
+                        size_t numRows, size_t numCols, int threshold);
+
+
+void operator_not(unsigned char* const d_inputImage, 
+                   unsigned char* const d_outputImage, 
+                   size_t numRows, size_t numCols);
+
+
 // Incluye las definiciones de las funciones de arriba
 #include "preprocess.cpp"
 
@@ -21,6 +31,11 @@ int main(int argc, char **argv) {
   uchar4        *h_rgbaImage2,  *d_rgbaImage2;
   uchar4        *h_outputImage, *d_outputImage;
 
+  //Variable para binarizar
+  unsigned char *h_binaryImage, *d_binaryImage;   //imagen binarizada
+  unsigned char *h_notImage, *d_notImage;         //imagen negada
+
+  //Datos auxiliares
   std::string input_file;
   std::string input_file2;
   std::string output_file;
@@ -31,7 +46,43 @@ int main(int argc, char **argv) {
   checkCudaErrors(cudaFree(0));
 
   switch (argc)
-  {  
+  { 
+    case 3:
+
+      //Caso ecualización de imagen
+      if( exercise == "-eq" ){
+
+      }
+
+      //Caso negación de imagen
+      //De preferencia una imagen binaria
+      if( exercise == "-not" ){
+
+          input_file  = std::string(argv[2]);
+          output_file = input_file + "_not.jpg";
+
+          preProcessNot(&h_binaryImage, &h_notImage,
+                        &d_binaryImage, &d_notImage,
+                        input_file);
+
+          operator_not(d_binaryImage, d_notImage, numRows(), numCols());
+
+          size_t numPixels = numRows()*numCols();
+          checkCudaErrors(cudaMemcpy(h_notImage, d_notImage, sizeof(unsigned char) * numPixels, cudaMemcpyDeviceToHost));
+
+          cv::Mat output(numRows(), numCols(), CV_8UC1, (void*)h_notImage);
+
+          cv::imwrite(output_file.c_str(), output);
+
+          /* Libera memoria */
+          cudaFree(d_binaryImage__);
+          cudaFree(d_notImage__);
+
+      }
+
+      break;
+
+
     case 4:
       
       //Caso gamma "-g" , gamma = aux
@@ -72,13 +123,27 @@ int main(int argc, char **argv) {
 
       }
 
-      //Caso ecualización de imagen
-      if( exercise == "-eq" ){
+      if( exercise == "-b" ){
 
-      }
+          input_file  = std::string(argv[2]);
+          output_file = input_file + "_binary.jpg";
+          aux         = atof(argv[3]); //threshold básico
 
-      //Caso negación de imagen
-      if( exercise == "-not" ){
+          //preprocesamos la imagen para convertira a binario
+          preProcessBinary(&h_rgbaImage, &h_binaryImage, 
+                           &d_rgbaImage, &d_binaryImage, input_file);
+
+          image_binarization(d_rgbaImage, d_binaryImage, numRows(), numCols(), (int) aux );
+          size_t numPixels = numRows()*numCols();
+          checkCudaErrors(cudaMemcpy(h_binaryImage, d_binaryImage, sizeof(unsigned char) * numPixels, cudaMemcpyDeviceToHost));
+
+          cv::Mat output(numRows(), numCols(), CV_8UC1, (void*)h_binaryImage);
+          cv::imwrite(output_file.c_str(), output);
+
+          /* Libera memoria */
+          cudaFree(d_rgbaImage__);
+          cudaFree(d_binaryImage__);
+
 
       }
 

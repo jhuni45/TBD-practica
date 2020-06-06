@@ -5,6 +5,7 @@
 // Max Threads per block in GeForce 210
 #define TxB 512
 
+//Kernel corrección gamma
 __global__
 void gamma_correction_kernel(const uchar4* const rgbaImage,
                                    uchar4* const outputImage,

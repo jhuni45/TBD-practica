@@ -25,4 +25,4 @@ cmake .
 make
 # Ejecución
 ./global_op -g | -eq | -not  [image path] [gamma -g]
-./global_op -s | -and | -or  [image1 path] [image2 path]
+./global_op -s | -and | -or  [image1 path] [image2 path] [percent -s]

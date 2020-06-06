@@ -6,16 +6,22 @@
 #include <cuda_runtime.h>
 #include <string>
 
-cv::Mat imageRGBA;
-cv::Mat imageRGBA2;
-cv::Mat imageOutput;
+//Matrices de las imagenes
+cv::Mat imageMat;
+cv::Mat imageMat2;
+cv::Mat imageOutputMat;
 
+//Punteros hacia el inicio de la imagen
+//Necesarios para luego liberar memoria
 uchar4        *d_rgbaImage__;
 uchar4        *d_rgba2Image__;
 uchar4        *d_outputImage__;
 
-size_t numRows() { return imageRGBA.rows; }
-size_t numCols() { return imageRGBA.cols; }
+unsigned char *d_binaryImage__;
+unsigned char *d_notImage__;
+
+size_t numRows() { return imageMat.rows; }
+size_t numCols() { return imageMat.cols; }
 
 // los tipos de retorno son void ya que cualquier error interno resultará en un cierre
 // por eso no se retornan errores...
@@ -36,21 +42,21 @@ void preProcess(uchar4 **inputImage,  uchar4  **outputImage,
     exit(1);
   }
 
-  cv::cvtColor(image, imageRGBA, CV_BGR2RGBA);
+  cv::cvtColor(image, imageMat, CV_BGR2RGBA);
 
   // Reserva memoria para el output
-  imageOutput.create(image.rows, image.cols, CV_8UC4);
+  imageOutputMat.create(image.rows, image.cols, CV_8UC4);
 
   //This shouldn't ever happen given the way the images are created
   //at least based upon my limited understanding of OpenCV, but better to check
-  if (!imageRGBA.isContinuous() || !imageOutput.isContinuous()) {
+  if (!imageMat.isContinuous() || !imageOutputMat.isContinuous()) {
     std::cerr << "Images aren't continuous!! Exiting." << std::endl;
     exit(1);
   }
 
   //Apuntamos al comienzo de las filas
-  *inputImage   = (uchar4 *)imageRGBA.ptr<unsigned char>(0);
-  *outputImage  = (uchar4 *)imageOutput.ptr<unsigned char>(0);
+  *inputImage   = (uchar4 *)imageMat.ptr<unsigned char>(0);
+  *outputImage  = (uchar4 *)imageOutputMat.ptr<unsigned char>(0);
 
   const size_t numPixels = numRows() * numCols();
   //Reserva memoria en el dispositivo
@@ -81,23 +87,23 @@ void preProcessTwo(uchar4 **inputImage,  uchar4 **inputImage2,  uchar4  **output
     exit(1);
   }
 
-  cv::cvtColor(image,  imageRGBA,  CV_BGR2RGBA);
-  cv::cvtColor(image2, imageRGBA2, CV_BGR2RGBA);
+  cv::cvtColor(image,  imageMat,  CV_BGR2RGBA);
+  cv::cvtColor(image2, imageMat2, CV_BGR2RGBA);
 
   // Reserva memoria para el output
-  imageOutput.create(image.rows, image.cols, CV_8UC4);
+  imageOutputMat.create(image.rows, image.cols, CV_8UC4);
 
   //This shouldn't ever happen given the way the images are created
   //at least based upon my limited understanding of OpenCV, but better to check
-  if (!imageRGBA.isContinuous() || !imageRGBA2.isContinuous() || !imageOutput.isContinuous()) {
+  if (!imageMat.isContinuous() || !imageMat2.isContinuous() || !imageOutputMat.isContinuous()) {
     std::cerr << "Images aren't continuous!! Exiting." << std::endl;
     exit(1);
   }
 
   //Apuntamos al comienzo de las filas
-  *inputImage   = (uchar4 *)imageRGBA.ptr<unsigned char>(0);
-  *inputImage2  = (uchar4 *)imageRGBA2.ptr<unsigned char>(0);
-  *outputImage  = (uchar4 *)imageOutput.ptr<unsigned char>(0);
+  *inputImage   = (uchar4 *)imageMat.ptr<unsigned char>(0);
+  *inputImage2  = (uchar4 *)imageMat2.ptr<unsigned char>(0);
+  *outputImage  = (uchar4 *)imageOutputMat.ptr<unsigned char>(0);
 
   const size_t numPixels = numRows() * numCols();
   //Reserva memoria en el dispositivo
@@ -113,4 +119,95 @@ void preProcessTwo(uchar4 **inputImage,  uchar4 **inputImage2,  uchar4  **output
   d_rgbaImage__   = *d_rgbaImage;
   d_rgba2Image__  = *d_rgbaImage2;
   d_outputImage__ = *d_outputImage;
+}
+
+
+//Preprocesar una imagen para binarizarla
+void preProcessBinary(uchar4 **inputImage,  unsigned char **outputImage,
+                      uchar4 **d_inputImage, unsigned char **d_outputImage,
+                      const std::string &filename) {
+  //Comprobar que el contexto se inicializa bien
+  checkCudaErrors(cudaFree(0));
+
+  cv::Mat image;
+  image = cv::imread(filename.c_str(), CV_LOAD_IMAGE_COLOR);
+  
+  
+  if (image.empty()) {
+    std::cerr << "No se pudo abrir el archivo: " << filename << std::endl;
+    exit(1);
+  }
+
+  cv::cvtColor(image, imageMat, CV_BGR2RGBA);
+
+  // Reserva memoria para el output
+  imageOutputMat.create(image.rows, image.cols, CV_8UC1);
+
+  //This shouldn't ever happen given the way the images are created
+  //at least based upon my limited understanding of OpenCV, but better to check
+  if (!imageMat.isContinuous() || !imageOutputMat.isContinuous()) {
+    std::cerr << "Images aren't continuous!! Exiting." << std::endl;
+    exit(1);
+  }
+
+  //Apuntamos al comienzo de las filas
+  *inputImage   = (uchar4 *)imageMat.ptr<unsigned char>(0);
+  *outputImage  = imageOutputMat.ptr<unsigned char>(0);
+
+  const size_t numPixels = numRows() * numCols();
+  //Reserva memoria en el dispositivo
+  checkCudaErrors(cudaMalloc(d_inputImage,   sizeof(uchar4) * numPixels));
+  checkCudaErrors(cudaMalloc(d_outputImage, sizeof(unsigned char) * numPixels));
+  checkCudaErrors(cudaMemset(*d_outputImage, 0, numPixels * sizeof(unsigned char))); // Asegurate de que no queda memoria sin liberar
+
+  // Copia el input en la GPU
+  checkCudaErrors(cudaMemcpy(*d_inputImage, *inputImage, sizeof(uchar4) * numPixels, cudaMemcpyHostToDevice));
+
+  d_rgbaImage__   = *d_inputImage;
+  d_binaryImage__ = *d_outputImage;
+}
+
+
+//Preprocesar una imagen para binarizarla
+void preProcessNot(unsigned char **inputImage,  unsigned char **outputImage,
+                   unsigned char **d_inputImage, unsigned char **d_outputImage,
+                   const std::string &filename) {
+  //Comprobar que el contexto se inicializa bien
+  checkCudaErrors(cudaFree(0));
+
+  cv::Mat image;
+  image = cv::imread(filename.c_str(), 0);
+  
+  
+  if (image.empty()) {
+    std::cerr << "No se pudo abrir el archivo: " << filename << std::endl;
+    exit(1);
+  }
+
+
+  // Reserva memoria para el output
+  imageOutputMat.create(image.rows, image.cols, CV_8UC1);
+
+  //This shouldn't ever happen given the way the images are created
+  //at least based upon my limited understanding of OpenCV, but better to check
+  if (!imageOutputMat.isContinuous()) {
+    std::cerr << "Images aren't continuous!! Exiting." << std::endl;
+    exit(1);
+  }
+
+  //Apuntamos al comienzo de las filas
+  *inputImage   = image.ptr<unsigned char>(0);
+  *outputImage  = imageOutputMat.ptr<unsigned char>(0);
+
+  const size_t numPixels = numRows() * numCols();
+  //Reserva memoria en el dispositivo
+  checkCudaErrors(cudaMalloc(d_inputImage,   sizeof(unsigned char) * numPixels));
+  checkCudaErrors(cudaMalloc(d_outputImage, sizeof(unsigned char) * numPixels));
+  checkCudaErrors(cudaMemset(*d_outputImage, 0, numPixels * sizeof(unsigned char))); // Asegurate de que no queda memoria sin liberar
+
+  // Copia el input en la GPU
+  checkCudaErrors(cudaMemcpy(*d_inputImage, *inputImage, sizeof(unsigned char) * numPixels, cudaMemcpyHostToDevice));
+
+  d_binaryImage__ = *d_inputImage;
+  d_notImage__    = *d_outputImage;
 }
