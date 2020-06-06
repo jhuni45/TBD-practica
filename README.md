@@ -1,5 +1,4 @@
-# Tópicos en Computación Gráfica
-## Curso del IX semestre de la Universidad Nacional de San Agustín
+## Tópicos en Computación Gráfica
 ### Integrantes
 - Basurco Cayllahua, Eduardo Rolando
 - Chavez Cruz, Jhunior Kenyi
