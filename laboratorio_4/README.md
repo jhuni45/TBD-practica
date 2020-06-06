@@ -23,5 +23,6 @@
 cmake .
 # Compilamos el código
 make
-# Corrección gamma
-./global_op image.jpg gamma
+# Ejecución
+./global_op -g | -eq | -not  [image path] [gamma -g]
+./global_op -s | -and | -or  [image1 path] [image2 path]

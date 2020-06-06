@@ -6,9 +6,9 @@
 #define TxB 512
 
 __global__
-void gamma_correction_kernel(const uchar4* const rgbaImage,
+void image_equalization_kernel(const uchar4* const rgbaImage,
                        uchar4* const outputImage,
-                       int numRows, int numCols, float gamma)
+                       int numRows, int numCols)
 {
   // El mapeo de los componentes uchar4 aRGBA es:
   // .x -> R ; .y -> G ; .z -> B ; .w -> A
@@ -18,20 +18,14 @@ void gamma_correction_kernel(const uchar4* const rgbaImage,
     uchar4 px = rgbaImage[i]; // thread pixel to process
     //printf( "Antes: R: %i G: %i B %i \n",px.x,px.y,px.z );
 
-    unsigned char rcolor = round(pow((px.x / 255.0f), (1.0f / gamma)  ) * 255.0f);
-    outputImage[i].x = (rcolor > 255.0f) ? 255.0f : rcolor;
-    unsigned char gcolor = round(pow((px.y / 255.0f), (1.0f / gamma)  ) * 255.0f);
-    outputImage[i].y = (gcolor > 255.0f) ? 255.0f : gcolor;
-    unsigned char bcolor = round(pow((px.z / 255.0f), (1.0f / gamma)  ) * 255.0f);
-    outputImage[i].z = (bcolor > 255.0f) ? 255.0f : bcolor;
 
     //printf( "Despues: R: %i G: %i B %i \n",outputImage[i].x,outputImage[i].y,outputImage[i].z );
   }
   
 }
 
-void gamma_correction(uchar4 * const d_rgbaImage,
-                  uchar4* const d_outputImage, size_t numRows, size_t numCols, float gamma)
+void image_equalization(uchar4 * const d_rgbaImage,
+                  uchar4* const d_outputImage, size_t numRows, size_t numCols)
 {
 
   // Dado que no importa la posicion relativa de los pixels
@@ -42,7 +36,7 @@ void gamma_correction(uchar4 * const d_rgbaImage,
   long int grids_n = ceil(total_px / TxB); // grids numer
   const dim3 blockSize(TxB, 1, 1);
   const dim3 gridSize(grids_n, 1, 1);
-  gamma_correction_kernel<<<gridSize, blockSize>>>(d_rgbaImage, d_outputImage, numRows, numCols, gamma);
+  image_equalization_kernel<<<gridSize, blockSize>>>(d_rgbaImage, d_outputImage, numRows, numCols);
   
   cudaDeviceSynchronize(); 
   checkCudaErrors(cudaGetLastError());
