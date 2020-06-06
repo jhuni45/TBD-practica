@@ -23,43 +23,37 @@
 ### Inicializar el entorno CUDA en Google Colab
 Ejecutar un programa Cuda para tarjetas Nvidia via Online con ayuda de una maquina virtual. Si no tienes una pc  con una tarjeta de video Nvidia para realizar programacion paralela, google colab nos brinda una maquina virtual en su plataforma Google Colab.
 ```codigo
-!apt-get --purge remove cuda nvidia* libnvidia-*
-!dpkg -l | grep cuda- | awk '{print $2}' | xargs -n1 dpkg --purge
-!apt-get remove cuda-*
-!apt autoremove
-!apt-get update
-
-!wget https://developer.nvidia.com/compute/cuda/9.2/Prod/local_installers/cuda-repo-ubuntu1604-9-2-local_9.2.88-1_amd64 -O cuda-repo-ubuntu1604-9-2-local_9.2.88-1_amd64.deb
-!dpkg -i cuda-repo-ubuntu1604-9-2-local_9.2.88-1_amd64.deb
-!apt-key add /var/cuda-repo-9-2-local/7fa2af80.pub
-!apt-get update
-!apt-get install cuda-9.2
 !pip install git+git://github.com/andreinechaev/nvcc4jupyter.git
 %load_ext nvcc_plugin
+
+Collecting git+git://github.com/andreinechaev/nvcc4jupyter.git
+  Cloning git://github.com/andreinechaev/nvcc4jupyter.git to /tmp/pip-req-build-t7vw7k9c
+  Running command git clone -q git://github.com/andreinechaev/nvcc4jupyter.git /tmp/pip-req-build-t7vw7k9c
+Requirement already satisfied (use --upgrade to upgrade): NVCCPlugin==0.0.2 from git+git://github.com/andreinechaev/nvcc4jupyter.git in /usr/local/lib/python3.6/dist-packages
+Building wheels for collected packages: NVCCPlugin
+  Building wheel for NVCCPlugin (setup.py) ... done
+  Created wheel for NVCCPlugin: filename=NVCCPlugin-0.0.2-cp36-none-any.whl size=4307 sha256=76363da1b9c47ca3d63e6e815f0bb83f62e8c2c7693ee97faf878def31cce1ba
+  Stored in directory: /tmp/pip-ephem-wheel-cache-7dv10ci6/wheels/10/c2/05/ca241da37bff77d60d31a9174f988109c61ba989e4d4650516
+Successfully built NVCCPlugin
+The nvcc_plugin extension is already loaded. To reload it, use:
+  %reload_ext nvcc_plugin
 ```
 
-## Hagamos un kernel (kernel 6) que utilice memoria compartida  y memoria bidimensional para sumar matrices 
-```cuda
-__shared __float Nds[DIMBLOCKX];
-__syncthreads(); 
-```
-
-### Lanzamiento del kernel 6 memoria compartida y memoria bidimensional
+## Lanzamiento del kernel 6 memoria compartida y memoria bidimensional
 ```cuda
 // Lanzamiento del kernel 6 con memoria compartida y memoria bidimensional
     /*--------- KERNEL 6 ---------*/
     /* configuración de la ejecución */
-    int chunk = 32;
     dim3 tamGrid(1,1);
     dim3 tamBlock(N,1,1);
     SumaColMatrizKernel_6 <<<tamGrid, tamBlock>>>(M, Md, Nd);
+    
 ```
 ### Kernel 6 memoria compartida  y memoria bidimensional
 ```cuda
 // Lanzamiento del kernel 6 con memoria compartida y memoria bidimensional
-#define DIMBLOCKX 32
-__global__ void SumaColMatrizKernel_6(int M, float* Md, float* Nd)
-{
+__global__ void SumaColMatrizKernel_6(int M, float* Md, float* Nd){
+    // Pvalue es usado para el valor intermedio
     float Pvalue = 0;
     int columna = threadIdx.x;
     int posIni = columna*M;
@@ -68,10 +62,11 @@ __global__ void SumaColMatrizKernel_6(int M, float* Md, float* Nd)
     }
     Nd[columna] = Pvalue;
   }
-
+  
 ```
 
 ## Compilación y ejecución de código
+
 ### Resultado para matriz de 1024x512
 Resultados en Colab: https://colab.research.google.com/drive/1y7XRU1DEryvOLZKcgAQ9HkLEKGQRgjZl?usp=sharing
 
@@ -79,7 +74,7 @@ Resultados en Colab: https://colab.research.google.com/drive/1y7XRU1DEryvOLZKcgA
 ![](imagenes/resultado1.PNG)
 
 #### Kernel 6 usando solo memoria compartida y dimensional
-![](imagenes/cudaresultado.PNG)
+![](imagenes/Resultado3.PNG)
 
 ## Reduce
 - Reducción en paralelo de la suma.
