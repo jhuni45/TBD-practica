@@ -23,5 +23,5 @@
 cmake .
 # Compilamos el código
 make
-# Convertir imagen a escala de grises
-./global_op image.jpg
+# Corrección gamma
+./global_op image.jpg gamma

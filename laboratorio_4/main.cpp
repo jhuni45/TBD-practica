@@ -6,7 +6,7 @@
 // Declaramos la funcion que invoca al kernel
 void gamma_correction(uchar4 * const d_rgbaImage,
                   uchar4* const d_greyImage, 
-                  size_t numRows, size_t numCols);
+                  size_t numRows, size_t numCols, float gamma);
 
 // Incluye las definiciones de las funciones de arriba
 #include "preprocess.cpp"
@@ -17,20 +17,21 @@ int main(int argc, char **argv) {
 
   std::string input_file;
   std::string output_file;
+  float gamma;
 
   //Comprobar que el contexto se inicializa bien
   checkCudaErrors(cudaFree(0));
 
   switch (argc)
   {
-	case 2:
+	case 3:
 	  input_file = std::string(argv[1]);
-	  output_file = "output.jpg";
-
+	  output_file = input_file + "_output.jpg";
+    gamma = atof(argv[2]);
 	  break;
 
 	default:
-      std::cerr << "Usage: ./global_op input_file [output_filename]" << std::endl;
+      std::cerr << "Usage: ./global_op input_file gamma" << std::endl;
       exit(1);
   }
 
@@ -40,7 +41,7 @@ int main(int argc, char **argv) {
     preProcess(&h_rgbaImage, &h_outputImage, &d_rgbaImage, &d_outputImage, input_file);
 
     // Invoca al código de kernel para ser llamado.
-    gamma_correction(d_rgbaImage, d_outputImage, numRows(), numCols());
+    gamma_correction(d_rgbaImage, d_outputImage, numRows(), numCols(), gamma);
 
     size_t numPixels = numRows()*numCols();
     checkCudaErrors(cudaMemcpy(h_outputImage, d_outputImage, sizeof(uchar4) * numPixels, cudaMemcpyDeviceToHost));
