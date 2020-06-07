@@ -41,22 +41,22 @@ Corrección Gamma (-g)
 !./global_op -g image.jpg 3
 ```
 
- - Entrada:
+Entrada:
   
   ![](Images/image_opt.jpg)
     
-  - Salida: 0.5
+Salida: 0.5
   
   ![](Output/ResultadoGamma0.5.jpg)
   
-   - Salida: 3 
+Salida: 3 
    
   ![](Output/ResultadoGamma3.jpg)
 
 ### 2. Ecualización de una imagen
- - Entrada:
+Entrada:
     
- - Salida:  
+Salida:  
  
 ### 3. Una operación aritmética (Ejm: Suma de imágenes)
 Suma media ponderada (-s)
@@ -65,11 +65,11 @@ Suma media ponderada (-s)
 !./global_op -s image.jpg image2.jpg 0.5
 ```
 
- - Entrada:
+Entrada:
   
   ![](Images/image_opt.jpg) ![](Images/image2_opt.jpg)
     
- - Salida:  
+Salida:  
    
   ![](Output/ResultadoSuma.jpg)
   
@@ -82,11 +82,11 @@ Operador and (-and)
 
 ```
 
-  - Entrada:
+Entrada:
   
   ![](Output/imagen1.png) ![](Output/imagen2.png)
   
-  - Salida:
+Salida:
   
   ![](Output/and.png)
 
@@ -98,11 +98,11 @@ Operador and (-and)
 
 ```
 
-  - Entrada:
+Entrada:
   
   ![](Output/imagen1.png) ![](Output/imagen2.png)
     
-  - Salida:
+Salida:
   
   ![](Output/or.png)
   
@@ -114,11 +114,11 @@ Operador not (-not)
 !./global_op -not person.jpg_binary.png
 ```
 
- - Entrada:
+Entrada:
   
   ![](Output/imagen3.png)
     
-  - Salida:
+Salida:
   
   ![](Output/not.png)
 
