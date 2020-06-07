@@ -32,7 +32,7 @@ make
 ### Una operación aritmética (Ejm: Suma de imágenes)
 
 ### Las operaciones lógicas AND, OR y Negación
-- Operacione lógica AND:
+#### Operacione lógica AND:
   - Entrada:
   
   ![](Output/imagen1.png) ![](Output/imagen2.png)
@@ -41,7 +41,7 @@ make
   
   ![](Output/and.png)
 
-- Operacione lógica OR:
+#### Operacione lógica OR:
   - Entrada:
   
   ![](Output/imagen1.png) ![](Output/imagen2.png)
@@ -50,6 +50,6 @@ make
   
   ![](Output/or.png)
   
-- Operacione lógica Negación:
+#### Operacione lógica Negación:
 
 
