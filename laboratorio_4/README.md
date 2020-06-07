@@ -34,13 +34,9 @@ Entrada:
   
   ![](Images/image_opt.jpg)
     
-Salida: 0.5
+Salida: 0.5                                                                  Salida: 3 
   
-  ![](Output/image_gamma0.5_opt.jpg)
-  
-Salida: 3 
-   
-  ![](Output/image_gamma3_opt.jpg)
+  ![](Output/image_gamma0.5_opt.jpg) ![](Output/image_gamma3_opt.jpg)
 
 ### 2. Ecualización de una imagen
 Entrada:
@@ -62,6 +58,8 @@ Salida:
    
   ![](Output/image_suma_opt.jpg)
   
+
+### 4. Las operaciones lógicas AND, OR y Negación
 #### Binarización (-b)
 - El tercer parámetro es un threshold
 - Se la convierte en escala de grises
@@ -73,7 +71,6 @@ Salida:
 !./global_op -b image2.jpg 160
 ```
 
-### 4. Las operaciones lógicas AND, OR y Negación
 #### 4.1 Operacion lógica AND:
 Operador and (-and)
 - Ingresa 2 imagenes binarizadas
