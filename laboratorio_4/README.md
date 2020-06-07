@@ -35,9 +35,7 @@ make
 - Operacione lógica AND:
   - Entrada:
   
-  ![](Output/imagen1.png)
-  
-  ![](Output/imagen2.png)
+  ![](Output/imagen1.png) ![](Output/imagen2.png)
   
   - Salida:
   
@@ -46,9 +44,7 @@ make
 - Operacione lógica OR:
   - Entrada:
   
-  ![](Output/imagen1.png)
-  
-  ![](Output/imagen2.png)
+  ![](Output/imagen1.png) ![](Output/imagen2.png)
     
   - Salida:
   
