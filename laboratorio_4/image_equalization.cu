@@ -29,22 +29,19 @@ void image_equalization_kernel(const uchar4* const rgbaImage,
     __shared__ unsigned int channelGacc[256];
     __shared__ unsigned int channelBacc[256];
 
-    __shared__ unsigned int channelReq[256];
-    __shared__ unsigned int channelGeq[256];
-    __shared__ unsigned int channelBeq[256];
+    __shared__ unsigned char channelReq[256];
+    __shared__ unsigned char channelGeq[256];
+    __shared__ unsigned char channelBeq[256];
 
 
     if( i == 0 ){
-      for(int q = 0; q < 0; q++ ){
-        channelR[i]    = 0;
-        channelG[i]    = 0;
-        channelB[i]    = 0;
-        channelRacc[i] = 0;
-        channelGacc[i] = 0;
-        channelBacc[i] = 0;
-        channelReq[i]  = 0;
-        channelReq[i]  = 0;
-        channelReq[i]  = 0;
+      for(int q = 0; q < 256; q++ ){
+        channelR[q]    = 0;
+        channelG[q]    = 0;
+        channelB[q]    = 0;
+        channelRacc[q] = 0;
+        channelGacc[q] = 0;
+        channelBacc[q] = 0;
       }
     }
 
@@ -81,6 +78,10 @@ void image_equalization_kernel(const uchar4* const rgbaImage,
         channelGacc[j] = channelGacc[j-1] + channelG[j];
         channelBacc[j] = channelBacc[j-1] + channelB[j];
       }
+
+      // printf("Canal R acc \n");
+      // for(int k = 0; k < 256; k++)
+      //   printf("%i - %i \n", k, channelRacc[k]);
 
     }
 
