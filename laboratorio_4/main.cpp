@@ -99,7 +99,7 @@ int main(int argc, char **argv) {
       if( exercise == "-g"  ){
 
           input_file   = std::string(argv[2]);
-          output_file  = input_file + "_gamma.png";
+          output_file  = input_file + "_gamma.jpg";
           aux          = atof(argv[3]); //gamma
 
           // Carga la imagen y nos prepara los punteros para la entrada y  
@@ -218,7 +218,7 @@ int main(int argc, char **argv) {
           input_file  = std::string(argv[2]);
           input_file2 = std::string(argv[3]);
           aux         = atof(argv[4]); //porcentaje suma
-          output_file = input_file + "_suma.png";
+          output_file = input_file + "_suma.jpg";
 
           preProcessTwo(&h_rgbaImage, &h_rgbaImage2, &h_outputImage,
                      &d_rgbaImage, &d_rgbaImage2, &d_outputImage, 
