@@ -1,6 +1,8 @@
 #include "utils.h"
 #include <stdio.h>
 #include <math.h>       /* ceil */
+#include <map>
+#include <vector>
 
 // Max Threads per block in GeForce 210
 #define TxB 512
@@ -19,7 +21,86 @@ void image_equalization_kernel(const uchar4* const rgbaImage,
     //printf( "Antes: R: %i G: %i B %i \n",px.x,px.y,px.z );
 
 
+    __shared__ unsigned int channelR[256];
+    __shared__ unsigned int channelG[256];
+    __shared__ unsigned int channelB[256];
 
+    __shared__ unsigned int channelRacc[256];
+    __shared__ unsigned int channelGacc[256];
+    __shared__ unsigned int channelBacc[256];
+
+    __shared__ unsigned int channelReq[256];
+    __shared__ unsigned int channelGeq[256];
+    __shared__ unsigned int channelBeq[256];
+
+
+    if( i == 0 ){
+      for(int q = 0; q < 0; q++ ){
+        channelR[i]    = 0;
+        channelG[i]    = 0;
+        channelB[i]    = 0;
+        channelRacc[i] = 0;
+        channelGacc[i] = 0;
+        channelBacc[i] = 0;
+        channelReq[i]  = 0;
+        channelReq[i]  = 0;
+        channelReq[i]  = 0;
+      }
+    }
+
+    __syncthreads();
+
+    //Calcular histograma
+    atomicAdd( &channelR[ px.x ] , 1);
+    atomicAdd( &channelG[ px.y ] , 1);
+    atomicAdd( &channelB[ px.z ] , 1);
+
+    __syncthreads();
+
+    if (i == 0){
+
+      //Impresión del histograma
+      // printf("Canal R \n");
+      // for(int k = 0; k < 256; k++)
+      //   printf("%i - %i \n", k, channelR[k]);
+      
+      // printf("Canal G \n");
+      // for(int k = 0; k < 256; k++)
+      //   printf("%i - %i \n", k, channelG[k]);
+
+      // printf("Canal B \n");
+      // for(int k = 0; k < 256; k++)
+      //   printf("%i - %i \n", k, channelB[k]);        
+
+      //Sumas acumuladas
+      channelRacc[0] = channelR[0];
+      channelGacc[0] = channelG[0];
+      channelBacc[0] = channelB[0];
+      for( int j = 1; j < 256; j++ ){
+        channelRacc[j] = channelRacc[j-1] + channelR[j];
+        channelGacc[j] = channelGacc[j-1] + channelG[j];
+        channelBacc[j] = channelBacc[j-1] + channelB[j];
+      }
+
+    }
+
+    __syncthreads();
+    //Ecualizamos con los primeros 256 hilos.
+    if(i < 256){
+
+      channelReq[i] = round((float)channelRacc[i] * 255.0/( (float)numRows*numCols ) );
+      channelGeq[i] = round((float)channelGacc[i] * 255.0/( (float)numRows*numCols ) );
+      channelBeq[i] = round((float)channelBacc[i] * 255.0/( (float)numRows*numCols ) );
+
+    }
+    
+    __syncthreads();
+
+    outputImage[i].x =  channelReq[px.x];
+    outputImage[i].y =  channelGeq[px.y];
+    outputImage[i].z =  channelBeq[px.z];
+
+    __syncthreads();
     //printf( "Despues: R: %i G: %i B %i \n",outputImage[i].x,outputImage[i].y,outputImage[i].z );
   }
   

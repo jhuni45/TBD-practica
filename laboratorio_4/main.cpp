@@ -31,6 +31,9 @@ void operator_or_image(unsigned char* const d_inputImage,
                        unsigned char* const d_outputImage, 
                        size_t numRows, size_t numCols);                        
 
+void image_equalization(uchar4* const d_rgbaImage,
+                        uchar4* const d_outputImage, 
+                        size_t numRows, size_t numCols);
 
 // Incluye las definiciones de las funciones de arriba
 #include "preprocess.cpp"
@@ -61,6 +64,25 @@ int main(int argc, char **argv) {
 
       //Caso ecualización de imagen
       if( exercise == "-eq" ){
+
+        input_file  = std::string(argv[2]);
+        output_file = input_file + "_equalization.jpg";
+
+        preProcess(&h_rgbaImage, &h_outputImage, 
+                   &d_rgbaImage, &d_outputImage, input_file);
+
+        image_equalization(d_rgbaImage, d_outputImage, numRows(), numCols());
+
+        size_t numPixels = numRows()*numCols();
+        checkCudaErrors(cudaMemcpy(h_outputImage, d_outputImage, sizeof(uchar4) * numPixels, cudaMemcpyDeviceToHost));
+
+        cv::Mat output(numRows(), numCols(), CV_8UC4, (void*)h_outputImage);
+
+        cv::imwrite(output_file.c_str(), output);
+
+        /* Libera memoria */
+        cudaFree(d_rgbaImage__);
+        cudaFree(d_outputImage__);
 
       }
 
