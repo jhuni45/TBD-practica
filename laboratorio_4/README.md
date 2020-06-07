@@ -39,9 +39,11 @@ make
   ![](Output/ResultadoGamma3.jpg)
 
 ### Ecualización de una imagen
-
+ - Entrada:
+    
+ - Salida:  
+ 
 ### Una operación aritmética (Ejm: Suma de imágenes)
-### Operador Gama
  - Entrada:
   
   ![](Images/image_opt.jpg) ![](Images/image2_opt.jpg)
