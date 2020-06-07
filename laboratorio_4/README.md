@@ -33,9 +33,21 @@ make
 
 ### Las operaciones lógicas AND, OR y Negación
 - Operacione lógica AND:
+  - Entrada:
+  ![](Output/image.jpg_binary.png)
+  ![](Output/image2.jpg_binary.png)
+  
+  - Salida:
+  ![](Output/image.jpg_binary.png_and.png)
 
 - Operacione lógica OR:
-
+  - Entrada:
+    ![](Output/image.jpg_binary.png)
+    ![](Output/image2.jpg_binary.png)
+    
+  - Salida:
+  ![](Output/image.jpg_binary.png_or.png)
+  
 - Operacione lógica Negación:
 
 
