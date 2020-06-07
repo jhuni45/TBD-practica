@@ -78,7 +78,9 @@ int main(int argc, char **argv) {
 
         cv::Mat output(numRows(), numCols(), CV_8UC4, (void*)h_outputImage);
 
-        cv::imwrite(output_file.c_str(), output);
+        cv::Mat MatOutput;
+        cv::cvtColor(output, MatOutput, cv::COLOR_RGBA2BGR );
+        cv::imwrite(output_file.c_str(), MatOutput);
 
         /* Libera memoria */
         cudaFree(d_rgbaImage__);
@@ -146,7 +148,9 @@ int main(int argc, char **argv) {
           // cvWaitKey (0);
           // cvDestroyWindow ("to_bw");
           // Guardar a fichero
-          cv::imwrite(output_file.c_str(), output);
+          cv::Mat MatOutput;
+          cv::cvtColor(output, MatOutput, cv::COLOR_RGBA2BGR );
+          cv::imwrite(output_file.c_str(), MatOutput);
 
           /* Libera memoria */
           cudaFree(d_rgbaImage__);
@@ -255,7 +259,9 @@ int main(int argc, char **argv) {
 
           cv::Mat output(numRows(), numCols(), CV_8UC4, (void*)h_outputImage);
 
-          cv::imwrite(output_file.c_str(), output);
+          cv::Mat MatOutput;
+          cv::cvtColor(output, MatOutput, cv::COLOR_RGBA2BGR );
+          cv::imwrite(output_file.c_str(), MatOutput);
 
           /* Libera memoria */
           cudaFree(d_rgbaImage__);
