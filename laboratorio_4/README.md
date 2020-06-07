@@ -60,7 +60,7 @@ make
   
   - Salida:
   
-  ![](Output/ResultadoSuma.jpg)
+  ![](Output/and.png)
 
 #### Operacion lógica OR:
   - Entrada:
