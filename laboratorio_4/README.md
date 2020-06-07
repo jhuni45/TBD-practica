@@ -33,7 +33,7 @@ make
 ```
 
 ## Resultados
-### Operador Gama
+### 1. Operador Gama
 Corrección Gamma (-g)
 - El tercer parámetro es el valor de gamma
 ```
@@ -53,12 +53,12 @@ Corrección Gamma (-g)
    
   ![](Output/ResultadoGamma3.jpg)
 
-### Ecualización de una imagen
+### 2. Ecualización de una imagen
  - Entrada:
     
  - Salida:  
  
-### Una operación aritmética (Ejm: Suma de imágenes)
+### 3. Una operación aritmética (Ejm: Suma de imágenes)
 Suma media ponderada (-s)
 - El cuarto parámetro es el porcentaje
 ```
@@ -73,8 +73,8 @@ Suma media ponderada (-s)
    
   ![](Output/ResultadoSuma.jpg)
   
-### Las operaciones lógicas AND, OR y Negación
-#### Operacion lógica AND:
+### 4. Las operaciones lógicas AND, OR y Negación
+#### 4.1 Operacion lógica AND:
 Operador and (-and)
 - Ingresa 2 imagenes binarizadas
 ```
@@ -90,7 +90,7 @@ Operador and (-and)
   
   ![](Output/and.png)
 
-#### Operacion lógica OR:
+#### 4.2 Operacion lógica OR:
  Operador or (-or)
  - Ingresa 2 imagenes binarizadas
 ```
@@ -106,7 +106,7 @@ Operador and (-and)
   
   ![](Output/or.png)
   
-#### Operacion lógica Negación:
+#### 4.3 Operacion lógica Negación:
 Operador not (-not)
 - Ingresa una imagen binarizada
 - Se invierten los elementos
