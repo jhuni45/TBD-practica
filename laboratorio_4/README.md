@@ -26,11 +26,28 @@ make
 
 ## Resultados
 ### Operador Gama
+ - Entrada:
+  
+  ![](Images/image.jpg)
+    
+  - Salida:
+  
+  ![](Output/not.png)
 
 ### Ecualización de una imagen
 
 ### Una operación aritmética (Ejm: Suma de imágenes)
-
+### Operador Gama
+ - Entrada:
+  
+  ![](Images/image.jpg) ![](Images/image2.jpg)
+    
+  - Salida: 0.5
+  ![](Output/ResultadoGamma0.5.jpg)
+  
+   - Salida: 3 
+  ![](Output/ResultadoGamma3.jpg)
+  
 ### Las operaciones lógicas AND, OR y Negación
 #### Operacion lógica AND:
   - Entrada:
@@ -39,7 +56,7 @@ make
   
   - Salida:
   
-  ![](Output/and.png)
+  ![](Output/ResultadoSuma.jpg)
 
 #### Operacion lógica OR:
   - Entrada:
