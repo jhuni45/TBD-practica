@@ -28,7 +28,7 @@ make
 ### Operador Gama
  - Entrada:
   
-  ![](Images/image.jpg)
+  ![](Images/image_opt.jpg)
     
   - Salida:
   
@@ -40,7 +40,7 @@ make
 ### Operador Gama
  - Entrada:
   
-  ![](Images/image.jpg) ![](Images/image2.jpg)
+  ![](Images/image_opt.jpg) ![](Images/image2_opt.jpg)
     
   - Salida: 0.5
   ![](Output/ResultadoGamma0.5.jpg)
