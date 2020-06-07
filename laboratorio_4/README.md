@@ -21,17 +21,6 @@ cmake .
 make
 ```
 
-#### Binarización (-b)
-- El tercer parámetro es un threshold
-- Se la convierte en escala de grises
-- Se binariza
-
-```
-!./global_op -b person.jpg 160
-!./global_op -b image.jpg 160
-!./global_op -b image2.jpg 160
-```
-
 ## Resultados
 ### 1. Operador Gama
 Corrección Gamma (-g)
@@ -47,11 +36,11 @@ Entrada:
     
 Salida: 0.5
   
-  ![](Output/ResultadoGamma0.5.jpg)
+  ![](Output/image_gamma0.5_opt.jpg)
   
 Salida: 3 
    
-  ![](Output/ResultadoGamma3.jpg)
+  ![](Output/image_gamma3_opt.jpg)
 
 ### 2. Ecualización de una imagen
 Entrada:
@@ -71,8 +60,19 @@ Entrada:
     
 Salida:  
    
-  ![](Output/ResultadoSuma.jpg)
+  ![](Output/image_suma_opt.jpg)
   
+#### Binarización (-b)
+- El tercer parámetro es un threshold
+- Se la convierte en escala de grises
+- Se binariza
+
+```
+!./global_op -b person.jpg 160
+!./global_op -b image.jpg 160
+!./global_op -b image2.jpg 160
+```
+
 ### 4. Las operaciones lógicas AND, OR y Negación
 #### 4.1 Operacion lógica AND:
 Operador and (-and)
