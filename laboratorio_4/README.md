@@ -33,11 +33,15 @@ Corrección Gamma (-g)
 Entrada:
   
   ![](Images/image_opt.jpg)
-    
-Salida: 0.5                                                                  Salida: 3 
-  
-  ![](Output/image_gamma0.5_opt.jpg) ![](Output/image_gamma3_opt.jpg)
 
+Salida: 3 
+ 
+ ![](Output/image_gamma3_opt.jpg)
+ 
+Salida: 0.5                                                                  
+  
+  ![](Output/image_gamma0.5_opt.jpg) 
+  
 ### 2. Ecualización de una imagen
 Entrada:
     
