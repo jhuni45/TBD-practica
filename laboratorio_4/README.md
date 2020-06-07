@@ -22,6 +22,8 @@ make
 ```
 
 ## Resultados
+Resultados en Colab: https://colab.research.google.com/drive/1GHCFAqyUfBr2PWxc0fQYu0UIuKvejx5F?usp=sharing
+
 ### 1. Operador Gama
 Corrección Gamma (-g)
 - El tercer parámetro es el valor de gamma
@@ -44,9 +46,13 @@ Salida: 0.5
   
 ### 2. Ecualización de una imagen
 Entrada:
-    
+
+  ![](Images/person_opt.jpg)
+  
 Salida:  
- 
+  
+  Experimentando errores :( 
+  
 ### 3. Una operación aritmética (Ejm: Suma de imágenes)
 Suma media ponderada (-s)
 - El cuarto parámetro es el porcentaje
