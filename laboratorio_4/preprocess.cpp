@@ -18,6 +18,7 @@ uchar4        *d_rgba2Image__;
 uchar4        *d_outputImage__;
 
 unsigned char *d_binaryImage__;
+unsigned char *d_binary2Image__;
 unsigned char *d_notImage__;
 
 size_t numRows() { return imageMat.rows; }
@@ -190,7 +191,7 @@ void preProcessNot(unsigned char **inputImage,  unsigned char **outputImage,
 
   //This shouldn't ever happen given the way the images are created
   //at least based upon my limited understanding of OpenCV, but better to check
-  if (!image.isContinuous() || !imageOutputMat.isContinuous()) {
+  if (!imageMat.isContinuous() || !imageOutputMat.isContinuous()) {
     std::cerr << "Images aren't continuous!! Exiting." << std::endl;
     exit(1);
   }
@@ -210,4 +211,55 @@ void preProcessNot(unsigned char **inputImage,  unsigned char **outputImage,
 
   d_binaryImage__ = *d_inputImage;
   d_notImage__    = *d_outputImage;
+}
+
+
+//Preprocesar una imagen para binarizarla
+void preProcessAnd(unsigned char **inputImage,   unsigned char **inputImage2, unsigned char **outputImage,
+                   unsigned char **d_inputImage, unsigned char **d_inputImage2, unsigned char **d_outputImage,
+                   const std::string &filename, const std::string &filename2) {
+  //Comprobar que el contexto se inicializa bien
+  checkCudaErrors(cudaFree(0));
+
+  cv::Mat image, image2;
+  image = cv::imread(filename.c_str(),  CV_LOAD_IMAGE_GRAYSCALE);
+  image2 = cv::imread(filename2.c_str(), CV_LOAD_IMAGE_GRAYSCALE);
+  imageMat = image;
+  imageMat2 = image2;
+  
+  if (image.empty() || image2.empty()) {
+    std::cerr << "No se pudo abrir el archivo: " << filename << std::endl;
+    exit(1);
+  }
+
+
+  // Reserva memoria para el output
+  imageOutputMat.create(image.rows, image.cols, CV_8UC1);
+
+  //This shouldn't ever happen given the way the images are created
+  //at least based upon my limited understanding of OpenCV, but better to check
+  if (!imageMat.isContinuous() || !imageOutputMat.isContinuous()) {
+    std::cerr << "Images aren't continuous!! Exiting." << std::endl;
+    exit(1);
+  }
+
+  //Apuntamos al comienzo de las filas
+  *inputImage   = imageMat.ptr<unsigned char>(0);
+  *inputImage2  = imageMat2.ptr<unsigned char>(0);
+  *outputImage  = imageOutputMat.ptr<unsigned char>(0);
+
+  const size_t numPixels = numRows() * numCols();
+  //Reserva memoria en el dispositivo
+  checkCudaErrors(cudaMalloc(d_inputImage,   sizeof(unsigned char) * numPixels));
+  checkCudaErrors(cudaMalloc(d_inputImage2,   sizeof(unsigned char) * numPixels));
+  checkCudaErrors(cudaMalloc(d_outputImage, sizeof(unsigned char) * numPixels));
+  checkCudaErrors(cudaMemset(*d_outputImage, 0, numPixels * sizeof(unsigned char))); // Asegurate de que no queda memoria sin liberar
+
+  // Copia el input en la GPU
+  checkCudaErrors(cudaMemcpy(*d_inputImage,  *inputImage, sizeof(unsigned char) * numPixels, cudaMemcpyHostToDevice));
+  checkCudaErrors(cudaMemcpy(*d_inputImage2, *inputImage2, sizeof(unsigned char) * numPixels, cudaMemcpyHostToDevice));
+
+  d_binaryImage__   = *d_inputImage;
+  d_binary2Image__  = *d_inputImage2;
+  d_notImage__      = *d_outputImage;
 }
