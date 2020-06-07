@@ -30,9 +30,13 @@ make
   
   ![](Images/image_opt.jpg)
     
-  - Salida:
+  - Salida: 0.5
   
-  ![](Output/not.png)
+  ![](Output/ResultadoGamma0.5.jpg)
+  
+   - Salida: 3 
+   
+  ![](Output/ResultadoGamma3.jpg)
 
 ### Ecualización de una imagen
 
@@ -42,11 +46,9 @@ make
   
   ![](Images/image_opt.jpg) ![](Images/image2_opt.jpg)
     
-  - Salida: 0.5
-  ![](Output/ResultadoGamma0.5.jpg)
-  
-   - Salida: 3 
-  ![](Output/ResultadoGamma3.jpg)
+ - Salida:  
+   
+  ![](Output/ResultadoSuma.jpg)
   
 ### Las operaciones lógicas AND, OR y Negación
 #### Operacion lógica AND:
