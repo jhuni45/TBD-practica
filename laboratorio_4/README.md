@@ -51,5 +51,11 @@ make
   ![](Output/or.png)
   
 #### Operacion lógica Negación:
-
+ - Entrada:
+  
+  ![](Output/imagen3.png)
+    
+  - Salida:
+  
+  ![](Output/not.png)
 
