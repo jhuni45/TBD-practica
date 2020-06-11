@@ -16,4 +16,5 @@
 - Laboratorio 4: Implementar en GPU operaciones globales.
 
 ### Practicas (Individuales)
-- Practica 1: Practica en Open CV (Procesamiento global en OpenCV).
+- Practica 1: Practica en Open CV - Procesamiento global en OpenCV.
+- Practica 2: Practica en Open CV - Filtros en OpenCV.
