@@ -5,6 +5,7 @@
   - Sobel
   - Laplace
   - Canny
+  - Convolucion Arbitraria(derivada y perfilada)
   - Filtro Ajuste
   - Filtro Suavizado
 
@@ -53,8 +54,28 @@ Salida:
    
   ![](canny.jpg)
   
+### 4. Perfilado
+Entrada:
+  
+  ![](test1.jpg) 
+    
+Salida:  
+   
+  ![](perfilada.jpg)
 
-### 4. Filtro Ajustado
+### 5. Derivado
+Entrada:
+  
+  ![](test1.jpg) 
+    
+Salida:  
+   
+  ![](derivada.jpg)
+
+
+
+
+### 6. Filtro Ajustado
 Entrada:
   ![](test2.jpg)
 
@@ -63,7 +84,7 @@ Salida:
    
   ![](filtro_ajuste.jpg)
 
-### 5. Filtro Ajustado
+### 7. Filtro Ajustado
 Entrada:
   ![](test1.jpg) ![](test2.jpg)
 
