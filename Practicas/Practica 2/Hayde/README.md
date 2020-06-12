@@ -3,21 +3,21 @@
 - Humpire Cutipa, Hayde Luzmila
 
 ## Requerimientos:
-1. FILTROS LINEALES:
+- FILTROS LINEALES:
   - Filtro de Sobel
   - Filtro de Laplace
   - Filtro de Bordes de Canny
-2. FILTROS LINEALES ARBITRARIOS:
+- FILTROS LINEALES ARBITRARIOS:
   - Máscara de perfilado
   - Máscara de derivada
-3. FILTROS DE MAXIMO, MINIMO Y MEDIANA:
+- FILTROS DE MAXIMO, MINIMO Y MEDIANA:
   - Operaciones de máximo local
   - Operaciones de mínimo local
-4. OPERACIONES DE MORFOLOGIA:
+- OPERACIONES DE MORFOLOGIA:
   - Filtro de erode
   - Filtro de dilate
   - Filtro de morphologyEx
-5. EJEMPLOS:
+- EJEMPLOS:
   - Aplicar estiramiento
   - Efecto de transición
 
@@ -35,6 +35,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 - Salida:
+
 ![](Salida/1-1_Filtro_Sobel.jpg)
 
 ### 1.2 Filtro de Laplace
@@ -45,6 +46,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 - Salida:
+
 ![](Salida/1-2_Filtro_Laplace.jpg)
 
 ### 1.3 Filtro de Bordes de Canny
@@ -55,6 +57,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 - Salida:
+
 ![](Salida/1-3_Filtro_Canny.jpg)
 
 ## 2. FILTROS LINEALES ARBITRARIOS:
@@ -66,6 +69,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 - Salida:
+
 ![](Salida/2-1_Filtro_Mascara_Perfilado.jpg)
 
 ### 2.2 Máscara de derivada
@@ -77,6 +81,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 - Salida:
+
 ![](Salida/2-1_Filtro_Mascara_Derivada.jpg)
 
 ## 3. FILTROS DE MAXIMO, MINIMO Y MEDIANA:
@@ -88,6 +93,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 - Salida:
+
 ![](Salida/3-1_Filtro_MaxMin_Estiramiento.jpg)
 
 
@@ -100,6 +106,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 - Salida:
+
 ![](Salida/4-1_Filtro_Erode.jpg
 
 
@@ -111,6 +118,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 - Salida:
+
 ![](Salida/4-2_Filtro_Dilate.jpg)
 
 
@@ -122,6 +130,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 - Salida:
+
 ![](Salida/4-3_Filtro_Morfologica.jpg)
 
 
@@ -134,16 +143,22 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 - Salida:
+
 ![](Salida/5-1_Filtro_Estiramiento_Local_Histograma.jpg)
 
 
 ### 5.2 Efecto de transición
 
-- Entrada: 
+- Entrada: Imagen A
 
-![](Entrada/imagen1.jpg) ![](Entrada/imagen2.jpg)
+![](Entrada/imagen1.jpg) 
+
+- Entrada: Imagen B
+
+![](Entrada/imagen2.jpg)
 
 - Salida:
+
 ![](Salida/5-2_Filtro_Transicion_Dos_Imagenes0.jpg)
 ![](Salida/5-2_Filtro_Transicion_Dos_Imagenes20.jpg)
 ![](Salida/5-2_Filtro_Transicion_Dos_Imagenes40.jpg)
