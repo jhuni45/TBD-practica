@@ -90,6 +90,34 @@ void get_canny( std::string filename ){
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
+//Filtro de máscara de convolución arbitraria
+void get_arbitrary( std::string filename ){
+
+    cv::Mat image;
+    image = cv::imread(filename, 1);
+    if( image.empty() ){
+        printf("No se pudo cargar la imagen\n");
+        return;
+    }
+
+    cv::Mat output1, output2;
+    cv::Mat kernelPerfilado = (cv::Mat_<float>(3, 3) << -1, -1, -1, -1, 9, -1, -1, -1, -1); 
+    cv::filter2D(image, output1, CV_8U, kernelPerfilado);
+    cv::Mat kernelDerivada = (cv::Mat_<float>(3, 3) << -2, -1, 0, -1, 0, 1, 0, 1, 2); 
+    cv::filter2D(image, output2, CV_8U, kernelDerivada, cv::Point(-1,-1), 128);
+
+    //Guardamos la imagen
+    cv::imwrite("Output/arbitrary.png", output2  );
+
+    //Mostramos la imagen
+    cv::imshow(" Entrada "   , image  );
+    cv::imshow(" Arbitrary " , output2);
+    cv::waitKey(0);
+
+}
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 void MinLocal (cv::Mat input, cv::Mat &output, int width, int height){
 
     cv::erode(input, output, cv::Mat::ones(height, width, CV_8U),
@@ -123,11 +151,11 @@ void get_localAdjust( std::string filename, int width ){
     cv::divide(result, maxi, result, 255.0);
 
     //Guardamos la imagen
-    cv::imwrite("Output/morphology01.png", result  );
+    cv::imwrite("Output/localAdjust.png", result  );
 
     //Mostramos la imagen
     cv::imshow(" Entrada "      , image );
-    cv::imshow(" Morphology01 " , result);
+    cv::imshow(" Local Adjustment " , result);
     cv::waitKey(0);
 
 
@@ -197,15 +225,21 @@ int main(int argc, char** argv) {
             get_canny(filename);
         }
 
-        //Llamada ejercicio "Morphology01"
+        //Llamada ejercicio "Arbitrary"
+        if( exercise == "-a" ){
+            filename = std::string( argv[2] );
+            get_arbitrary(filename);
+        }
+
+        //Llamada ejercicio "Local Adjustment"
         if( exercise == "-m1" && argc == 4 ){
             filename = std::string( argv[2] );
             width    = std::atoi( argv[3] );
             get_localAdjust(filename, width);
         }
 
-        //Llamada ejercicio "Morphology02"
-        if( exercise == "-m2" ){
+        //Llamada ejercicio "Smoothing"
+        if( exercise == "-m2" && argc == 4 ){
             filename = std::string( argv[2] );
             filename2 = std::string( argv[3] );
             get_smoothing(filename, filename2);
