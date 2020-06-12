@@ -20,7 +20,7 @@ cmake .
 # Compilamos el código
 make
 # Ejecutamos
-./pract2 [ejercicio -s | -l | -c | -m1 | -m2] [imagen1] [imagen2 (-m2) ]
+./pract2 [ ejercicio -s | -l | -a | -c | -m1 | -m2 ] [imagen1] [imagen2 (-m2) ]
 ```
 
 
