@@ -14,12 +14,12 @@
   - Operaciones de máximo local
   - Operaciones de mínimo local
 - OPERACIONES DE MORFOLOGIA:
-  - Filtro de erode
-  - Filtro de dilate
-  - Filtro de morphologyEx
+  - Filtro de Erode
+  - Filtro de Dilate
+  - Filtro de MorphologyEx
 - EJEMPLOS:
-  - Aplicar estiramiento
-  - Efecto de transición
+  - Aplicar Estiramiento
+  - Efecto de Transición
 
 ### Google Colab:
 Para ver los resultados en Google Colab: https://colab.research.google.com/drive/1lhRgsIcqYrz-YbLsYMGsrPeMnHpKKwud?usp=sharing
@@ -98,7 +98,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 ## 4. OPERACIONES DE MORFOLOGIA:
-### 4.1 Filtro de erode
+### 4.1 Filtro de Erode
 
 - Entrada: 
 
@@ -110,7 +110,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 ![](Salida/4-1_Filtro_Erode.jpg
 
 
-### 4.2 Filtro de dilate
+### 4.2 Filtro de Dilate
 
 - Entrada: 
 
@@ -122,7 +122,7 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 ![](Salida/4-2_Filtro_Dilate.jpg)
 
 
-### 4.3 Filtro de morphologyEx
+### 4.3 Filtro de MorphologyEx
 
 - Entrada: 
 
@@ -135,7 +135,8 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 
 ## 5. EJEMPLOS:
-### 5.1 Aplicar estiramiento
+### 5.1 Aplicar Estiramiento
+Ejemplo 1. Aplicar un ajuste (o estiramiento) local del histograma a la imagen img, con ancho dado. El resultado se almacena en res.
 
 - Entrada: 
 
@@ -147,7 +148,8 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 ![](Salida/5-1_Filtro_Estiramiento_Local_Histograma.jpg)
 
 
-### 5.2 Efecto de transición
+### 5.2 Efecto de Transición
+Ejemplo 2. Efecto de transición entre dos imágenes (que deben ser de igual tamaño), a través de un suavizado intermedio.
 
 - Entrada: Imagen A
 
