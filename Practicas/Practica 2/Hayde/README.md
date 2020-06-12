@@ -107,7 +107,8 @@ Para ver los resultados en Google Colab: https://colab.research.google.com/drive
 
 - Salida:
 
-![](Salida/4-1_Filtro_Erode.jpg
+![](Salida/4-1_Filtro_Erode.jpg)
+
 
 
 ### 4.2 Filtro de Dilate
