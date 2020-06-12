@@ -1,4 +1,3 @@
-# FILTROS EN OpenCV
-## Estudiante
-- Larraondo Lamchog, Alejandro Jesús
+Hayde Luzmila Humpire Cutipa
 
+Para verlo en Google Colab:
