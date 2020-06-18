@@ -56,7 +56,7 @@ Salida:
 ### 4. Inclinar
 Entrada:
   
-  ![](test1.jpg) 
+  ![](test2.jpg) 
     
 Salida:  
    
