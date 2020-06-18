@@ -1,13 +1,12 @@
 # IMPLEMENTACIÓN DE FILTROS 
-
+La practica se finalizao a las 11:20
 ## Preliminares
-- Implementar en OpenCV las siguientes operaciones con filtros.
-  - Sobel
-  - Laplace
-  - Canny
-  - Convolucion Arbitraria(derivada y perfilada)
-  - Filtro Ajuste
-  - Filtro Suavizado
+- Implementar en OpenCV las siguientes operaciones en imagenes.
+  - Rezise
+  - Flip
+  - Rotar
+  - Inclinar
+  - Transformacion Afin
 
 ## Para ejecutar
 Compilación
@@ -19,9 +18,9 @@ make
 ```
 
 ## Resultados
-Resultados en Colab: https://colab.research.google.com/drive/1L_HurfPhWpiBiCafSYkp7Qt0jCUQ0uGX
+Resultados en Colab: https://colab.research.google.com/drive 1_5jksUQtr03TNW-qmf5L5cp-4f0zmoBX#scrollTo=NmD3WK1-HxPz
 
-### 1. Sobel
+### 1. Rezise
 - El primer y el segundo parametro son las imagenes 
 ```
 !./global_op -g test1.jpg test2.jpg
@@ -33,63 +32,45 @@ Entrada:
 
 Salida:
  
- ![](sobel.jpg)
+ ![](rezise.jpg)
  
   
-### 2. Laplace
+### 2. Flip
 Entrada:
 
   ![](test2.jpg)
   
 Salida:  
   
-  ![](laplace.jpg)
+  ![](flip.jpg)
   
-### 3. Canny
+### 3. Rotar
 Entrada:
   
   ![](test1.jpg) 
     
 Salida:  
    
-  ![](canny.jpg)
+  ![](rotar.jpg)
   
-### 4. Perfilado
-Entrada:
-  
-  ![](test1.jpg) 
-    
-Salida:  
-   
-  ![](perfilada.jpg)
-
-### 5. Derivado
+### 4. Inclinar
 Entrada:
   
   ![](test1.jpg) 
     
 Salida:  
    
-  ![](derivada.jpg)
+  ![](inclinar.jpg)
 
-
-
-
-### 6. Filtro Ajustado
+### 5. Transformacion Afin
 Entrada:
-  ![](test2.jpg)
-
-
+  
+  ![](test1.jpg) 
+    
 Salida:  
    
-  ![](filtro_ajuste.jpg)
-
-### 7. Filtro Ajustado
-Entrada:
-  ![](test1.jpg) ![](test2.jpg)
+  ![](transformacion_afin.jpg)
 
 
-Salida:  
-   
-  errores en la salida 
+
 
