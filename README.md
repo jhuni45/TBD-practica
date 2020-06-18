@@ -14,7 +14,9 @@
 - Laboratorio 2: Sumar una matriz en paralelo.
 - Laboratorio 3: Suma de los valores de una matriz en GPU.
 - Laboratorio 4: Implementar en GPU operaciones globales.
+- Laboratorio 5: Implementar la convolución en CUDA.
 
 ### Practicas (Individuales)
 - Practica 1: Practica en Open CV - Procesamiento global en OpenCV.
 - Practica 2: Practica en Open CV - Filtros en OpenCV.
+- Practica 3: Practica en Open CV - Transformaciones geométricas en OpenCV.
