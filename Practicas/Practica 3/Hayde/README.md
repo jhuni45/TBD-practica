@@ -61,8 +61,6 @@ Salida: 0
 
 #### Prueba 2
 
-##### Horizontal 
-
 Entrada: 
 
 ![](Entrada/imagen2.jpg)
