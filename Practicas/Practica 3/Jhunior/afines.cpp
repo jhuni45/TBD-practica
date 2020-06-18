@@ -12,10 +12,10 @@ int get_zoom2x(char * file){
         return -1;
     }
 	imshow("orginal ", img);
-	resize (img, img, Size(), 2, 2);
+	resize (img, img, Size(), 2, 1);
 
     imshow("zoom2x", img);
-    //imwrite("salidas/arbitrario.png",salida2);
+    imwrite("salidas/zoom2x.png",img);
 	waitKey(0);
 }
 
@@ -29,7 +29,7 @@ int get_flip(char * file, int flipCode){
 	imshow("orginal ", img);
 	flip(img, dst, flipCode);
     imshow("flip", dst);
-    //imwrite("salidas/arbitrario.png",salida2);
+    imwrite("salidas/flip.png",dst);
 	waitKey(0);
 }
 
@@ -57,6 +57,7 @@ int get_rotar(char * file, float angulo){
     imshow("original", img);
     Rotar(img,out, angulo);
     imshow("rotacion", out);
+    imwrite("salidas/rotar.png",out);
 	waitKey(0);
 }
 
@@ -71,6 +72,7 @@ int get_shear(char *file, float value){
 	Mat c= (Mat_<double>(2, 3) << 1,  inc,  -inc*img.size().height/2.0, 0,  1,   0 );
 	warpAffine(img, img, c, img.size());
 	imshow("inclinacion", img);
+    imwrite("salidas/inclinacion.png",img);
 	waitKey(0);
 }
 
@@ -93,6 +95,7 @@ int get_affine(char * file){
 	Mat c= getAffineTransform(pt1, pt2);
 	warpAffine(img, img, c, img.size());
 	imshow("affine_transform", img);
+    imwrite("salidas/affine.png",img);
 	waitKey(0);
 }
 
