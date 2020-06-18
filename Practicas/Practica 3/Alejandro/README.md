@@ -34,18 +34,18 @@ make
 ![](Output/zoom2x.png)
 ### 2. Espejo vertical y horizontal
 - Flip 2
-![](Output/flip_2.png)
+    ![](Output/flip_2.png)
 - Flip -2
-![](Output/flip_-2.png)
+    ![](Output/flip_-2.png)
 ### 3. Rotar y escalar
 - Rotation 30°
-![](Output/rotation_30.000000.png)
+    ![](Output/rotation_30.000000.png)
 - Rotation 76.5°
-![](Output/rotation_76.500000.png)
+    ![](Output/rotation_76.500000.png)
 ### 4. Inclinar
 - Shear 30°
-![](Output/shear_30.000000.png)
+    ![](Output/shear_30.000000.png)
 - Shear 76.5°
-![](Output/shear_76.500000.png)
+    ![](Output/shear_76.500000.png)
 ### 5. Transformación afín
 ![](Output/affine.png)
