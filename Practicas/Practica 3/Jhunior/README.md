@@ -2,6 +2,9 @@
 ## Estudiante
 - Chavez Cruz, Jhunior Kenyi
 
+## Fecha de entrega
+18 de junio 11:44 am
+
 ## Preliminares
 - Implementar transformaciones afines de imágenes en OpenCV
   - Zoom
