@@ -1,16 +1,16 @@
-# FILTROS DE IMÁGENES EN OPENCV 
+# TRANSFORMACIONES AFINES IMÁGENES EN OPENCV 
 ## Estudiante
 - Chavez Cruz, Jhunior Kenyi
 
 ## Preliminares
-- Implementar filtros de imágenes en OpenCV
-  - Filtro de Sobel
-  - Filtro de Laplace
-  - Filtro de bordes de Canny
-  - Operaciones morfológicas compuestas
-  - Filtros lineales arbitrarios
+- Implementar transformaciones afines de imágenes en OpenCV
+  - Zoom
+  - Flip
+  - Rotation
+  - Inclinacion
+  - Transformación afin
   
-- Para visualizar todos los resultado ingresar en este link => [Resultados finales](https://github.com/jhuni45/TCG-Laboratorio/tree/master/Practicas/Practica%202/Jhunior/salidas)
+- Para visualizar todos los resultado ingresar en este link => [Resultados finales](https://github.com/jhuni45/TCG-Laboratorio/tree/master/Practicas/Practica%203/Jhunior/salidas)
 ## Ejecución
 Compilación
 ```bash
@@ -19,34 +19,25 @@ cmake .
 # Compilamos el código
 make
 # Ejecutamos
-./DisplayImage <imagen1> <imagen2>
+./DisplayImage <comando> <imagen1> <valor> (este ultimo valor solo para algunos ejemplos)
+# Ejemplos
+./DisplayImage -f pokachu.png -1
 ```
 ## Imágenes de entrada para todos los algoritmos
 ![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%202/Jhunior/imagenes/pokachu.png)
-![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%202/Jhunior/imagenes/hotdog.png)
 
 ### Pruebas
-#### 1. Filtro de Sobel
-![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%202/Jhunior/salidas/sobelout.gif)
+#### 1. Transformación ZOOM (2x1)
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%203/Jhunior/salidas/zoom2x.png)
 
-#### 2. Filtro de Laplace
-![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%202/Jhunior/salidas/laplaceout.gif)
+#### 2. Transformación FLIP (-1)
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%203/Jhunior/salidas/flip.png)
 
-#### 3. Filtro de bordes de Canny
-![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%202/Jhunior/salidas/arbitrarioout.gif)
+#### 3. Transformación ROTACION (20 grados)
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%203/Jhunior/salidas/rotar.png)
 
-#### 4. Operaciones morfológicas compuestas
-- Ajuste o estiramiento local
+#### 4. Transformación INCLINACIÓN (45 grados)
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%203/Jhunior/salidas/inclinacion.png)
 
-![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%202/Jhunior/salidas/morfo1out.gif)
-
-- Efecto de transición
-
-![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%202/Jhunior/salidas/morfo2out.gif)
-
-
-#### 5. Filtros lineales arbitrarios
-![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%202/Jhunior/salidas/arbitrarioout.gif)
-
-
-
+#### 5. Transformación AFIN
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Practicas/Practica%203/Jhunior/salidas/affine.png)
