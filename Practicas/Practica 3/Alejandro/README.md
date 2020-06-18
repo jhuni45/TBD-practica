@@ -33,10 +33,10 @@ make
 ### 1. Zoom 2x
 ![](Output/zoom2x.png)
 ### 2. Espejo vertical y horizontal
-- Flip 2
+- Flip 1
 
     ![](Output/flip_2.png)
-- Flip -2
+- Flip -1
 
     ![](Output/flip_-2.png)
 
