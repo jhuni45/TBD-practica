@@ -11,7 +11,9 @@
   - Ejercicio 5: Aplicar una transformación afín a una imagen img, suponiendo que tenemos 3 puntos en img y los 3 puntos correspondientes en destino.
 
 ### Google Colab:
-Hora : 
+
+Hora: 11:50 am
+
 Para ver los resultados en Google Colab: https://colab.research.google.com/drive/1HfuAALzdsiOR_ojI8LjPCUMEwiIwKgVN?usp=sharing
 
 ## EJERCICIOS
