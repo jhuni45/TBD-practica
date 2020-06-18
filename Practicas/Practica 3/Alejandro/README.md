@@ -10,7 +10,8 @@
     - Rotar y escalar
     - Inclinar
     - Transformación afín
-- Para visualizar todos los resultado ingresar en este link : [Resultados finales](https://github.com/jhuni45/TCG-Laboratorio/tree/master/Practicas/Practica%203/Alejandro/Output)    
+- Para visualizar todos los resultado ingresar en este link : [Resultados finales](https://github.com/jhuni45/TCG-Laboratorio/tree/master/Practicas/Practica%203/Alejandro/Output)
+- Subido a las 12:00 pm del 18 de Junio    
 
 ## Ejecución
 Compilación
