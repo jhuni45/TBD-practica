@@ -17,7 +17,7 @@ void get_zoom_2x(std::string filename){
 	cv::resize (image, image, cv::Size(), 2, 2);
 
     cv::imshow("Zoom 2x", image);
-    //cv::imwrite("Output/zoom.png",image);
+    cv::imwrite("Output/zoom2x.png",image);
 	cv::waitKey(0);
 }
 
@@ -32,8 +32,8 @@ void get_flip(std::string filename, int flipCode){
     cv::Mat destination;
 	cv::imshow("Original ", image);
 	cv::flip(image, destination, flipCode);
-    cv::imshow("Flip", destination);
-    //cv::imwrite("Output/flip.png",image);
+    cv::imshow("Flip " + std::to_string(flipCode), destination);
+    cv::imwrite("Output/flip_" + std::to_string(flipCode) + ".png",destination);
 	cv::waitKey(0);
 }
 
@@ -58,10 +58,11 @@ void get_rotate(std::string filename, float angle){
         printf("No image data \n");
         return;
     }
-    cv::Mat out;
+    cv::Mat destination;
     cv::imshow("Original", image);
-    Rotate(image, out, angle);
-    cv::imshow("Rotation", out);
+    Rotate(image, destination, angle);
+    cv::imshow("Rotation " + std::to_string(angle) + " degrees", destination);
+    cv::imwrite("Output/rotation_" + std::to_string(angle) + ".png",destination);
 	cv::waitKey(0);
 }
 
@@ -78,7 +79,8 @@ void get_shear(std::string filename, float angle){
 	double inc = tan(angle*M_PI/180.0);
 	cv::Mat c  = (cv::Mat_<double>(2, 3) << 1,  inc,  -inc*image.size().height/2.0, 0,  1,   0 );
 	cv::warpAffine(image, image, c, image.size());
-	cv::imshow("Shear", image);
+	cv::imshow("Shear " + std::to_string(angle) + " degrees", image);
+    cv::imwrite("Output/shear_" + std::to_string(angle) + ".png",image);
 	cv::waitKey(0);
 }
 
@@ -86,12 +88,12 @@ void get_shear(std::string filename, float angle){
 //Aplicar una transformación afín a una imagen img, suponiendo que
 //tenemos 3 puntos en img y los 3 puntos correspondientes en destino
 void get_affine(std::string filename){
-	cv::Mat img = cv::imread(filename,1);
-	if ( !img.data){
+	cv::Mat image = cv::imread(filename,1);
+	if ( !image.data){
         printf("No image data \n");
         return;
     }
-    cv::imshow("Original", img);
+    cv::imshow("Original", image);
 	cv::Mat pt1(1, 3, CV_32FC2);
 	pt1.at<cv::Vec2f>(0,0) = cv::Vec2f(0, 0);
 	pt1.at<cv::Vec2f>(0,1) = cv::Vec2f(100, 0);
@@ -101,8 +103,9 @@ void get_affine(std::string filename){
 	pt2.at<cv::Vec2f>(0,1) = cv::Vec2f(80, 40);
 	pt2.at<cv::Vec2f>(0,2) = cv::Vec2f(20, 70);
 	cv::Mat c = cv::getAffineTransform(pt1, pt2);
-	cv::warpAffine(img, img, c, img.size());
-	cv::imshow("Affine Transform", img);
+	cv::warpAffine(image, image, c, image.size());
+	cv::imshow("Affine Transform", image);
+    cv::imwrite("Output/affine.png",image);
 	cv::waitKey(0);
 }
 
@@ -171,7 +174,7 @@ int main(int argc, char** argv) {
     default:
         printf("Incorrect command\n");
         printf("Parameters: [-z | -a] [image] \n");
-        printf("Parameters: [-f | -r] [image] [aux_number] \n");
+        printf("Parameters: [-f | -r | -s] [image] [aux_number] \n");
         break;
     }
 
