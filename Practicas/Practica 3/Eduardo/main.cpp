@@ -63,7 +63,7 @@ void inclinar(char* file){
         return;
     }
 
-    double inc= tan(180.0*M_PI/180.0);
+    double inc= tan(45*M_PI/180.0);
     Mat c= (Mat_<double>(2, 3) << 1, inc, -inc*img.size().height/2.0, 0, 1, 0 );
     warpAffine(img, img, c, img.size());
     imwrite( "inclinar.jpg", img );
