@@ -59,6 +59,28 @@ void canny(char* file){
     imwrite( "canny.jpg", bordes );
 }
 
+void convolucion_arbitraria(char* file){
+    Mat input_image1;
+    input_image1 = imread( file, 1 );
+
+    if( !input_image1.data )
+    {
+        cout<< " No image data \n ";
+        return;
+    }
+
+    Mat salida1, salida2;
+    Mat kernelPerfilado= (Mat_<float>(3, 3) << -1, -1, -1,
+    -1, 9, -1,
+    -1, -1, -1);
+    filter2D(input_image1, salida1, CV_8U, kernelPerfilado);
+    Mat kernelDerivada= (Mat_<float>(3, 3) << -2, -1, 0, -1, 0, 1, 0, 1, 2);
+    filter2D(input_image1, salida2, CV_8U, kernelDerivada, Point(-1,-1), 128);
+    imwrite( "perfilada.jpg", salida1 );
+    imwrite( "derivada.jpg", salida2 );
+}
+
+
 void MinLocal (Mat entrada, Mat &salida, int ancho, int alto)
 {
     erode(entrada, salida, Mat::ones(alto, ancho, CV_8U),
@@ -116,5 +138,6 @@ int main(int argc, char **argv)
     canny(argv[1]);
     filtro_ajuste(argv[2]);
     filtro_suavizado(argv[1],argv[2]);
+    convolucion_arbitraria(argv[1]);
     return 0;
 }
