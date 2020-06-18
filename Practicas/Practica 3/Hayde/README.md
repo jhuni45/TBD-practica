@@ -26,7 +26,6 @@ Entrada:
 
 ![](Entrada/imagen1.jpg)
 
-
 Salida:
 
 ![](Salida/1_Transformacion_Zoomx2.jpg)
@@ -106,7 +105,6 @@ Salida: 150
 Entrada: 
 
 ![](Entrada/imagen2.jpg)
-
 
 Salida: 25
 
@@ -193,7 +191,6 @@ Salida:
 Entrada: 
 
 ![](Entrada/imagen2.jpg)
-
 
 Salida:
 
