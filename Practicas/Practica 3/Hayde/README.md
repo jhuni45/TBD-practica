@@ -1,4 +1,4 @@
-## PROCESAMIENTO GOBLAL EN OpenCV
+## TRANSFORMACIONES GEOMÉTRICAS EN OpenCV
 ## Estudiante
 - Humpire Cutipa, Hayde Luzmila
 
