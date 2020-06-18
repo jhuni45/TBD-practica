@@ -3,153 +3,198 @@
 - Humpire Cutipa, Hayde Luzmila
 
 ## Requerimientos:
-#### FILTROS LINEALES:
-  - Filtro de Sobel
-  - Filtro de Laplace
-  - Filtro de Bordes de Canny
-#### FILTROS LINEALES ARBITRARIOS:
-  - Máscara de perfilado
-  - Máscara de derivada
-#### OPERACIONES DE MORFOLOGIA:
-  - Filtro de Erode
-  - Filtro de Dilate
-  - Filtro de MorphologyEx
-#### EJEMPLOS:
-  - Aplicar Estiramiento
-  - Efecto de Transición
+#### Implementar Transformaciones geométricas en OpenCV::
+  - Ejercicio 1: Realizar el zoom 2x de una imagen img (modo in-place).
+  - Ejercicio 2: Realizar el espejo vertical y horizontal de una imagen.
+  - Ejercicio 3: Rotar y escalar una imagen indicando ángulo y escala.
+  - Ejercicio 4: Inclinar (shear) la imagen img en X en angulo grados y desplazar en X para que se quede centrada.
+  - Ejercicio 5: Aplicar una transformación afín a una imagen img, suponiendo que tenemos 3 puntos en img y los 3 puntos correspondientes en destino.
 
 ### Google Colab:
-Para ver los resultados en Google Colab: https://colab.research.google.com/drive/1lhRgsIcqYrz-YbLsYMGsrPeMnHpKKwud?usp=sharing
+Hora : 
+Para ver los resultados en Google Colab: https://colab.research.google.com/drive/1HfuAALzdsiOR_ojI8LjPCUMEwiIwKgVN?usp=sharing
 
 ## EJERCICIOS
 
-### 1. FILTROS LINEALES:
-#### 1.1 Filtro de Sobel
+### 1. Realizar el zoom 2x de una imagen img (modo in-place).
 
-- Entrada: 
+#### Prueba 1
 
-![](Entrada/imagen1.jpg)
-
-
-- Salida:
-
-![](Salida/1-1_Filtro_Sobel.jpg)
-
-### 1.2 Filtro de Laplace
-
-- Entrada: 
+Entrada: 
 
 ![](Entrada/imagen1.jpg)
 
 
-- Salida:
+Salida:
 
-![](Salida/1-2_Filtro_Laplace.jpg)
+![](Salida/1_Transformacion_Zoomx2.jpg)
 
-### 1.3 Filtro de Bordes de Canny
+#### Prueba 2
 
-- Entrada: 
-
-![](Entrada/imagen1.jpg)
-
-
-- Salida:
-
-![](Salida/1-3_Filtro_Canny.jpg)
-
-## 2. FILTROS LINEALES ARBITRARIOS:
-### 2.1 Máscara de perfilado
-
-- Entrada: 
-
-![](Entrada/imagen1.jpg)
-
-
-- Salida:
-
-![](Salida/2-1_Filtro_Mascara_Perfilado.jpg)
-
-### 2.2 Máscara de derivada
- 
-
-- Entrada: 
-
-![](Entrada/imagen1.jpg)
-
-
-- Salida:
-
-![](Salida/2-1_Filtro_Mascara_Derivada.jpg)
-
-## 3. OPERACIONES DE MORFOLOGIA:
-### 3.1 Filtro de Erode
-
-- Entrada: 
-
-![](Entrada/imagen1.jpg)
-
-
-- Salida:
-
-![](Salida/4-1_Filtro_Erode.jpg)
-
-
-
-### 3.2 Filtro de Dilate
-
-- Entrada: 
-
-![](Entrada/imagen1.jpg)
-
-
-- Salida:
-
-![](Salida/4-2_Filtro_Dilate.jpg)
-
-
-### 3.3 Filtro de MorphologyEx
-
-- Entrada: 
-
-![](Entrada/imagen1.jpg)
-
-
-- Salida:
-
-![](Salida/4-3_Filtro_Morfologica.jpg)
-
-
-## 4. EJEMPLOS:
-### 4.1 Aplicar Estiramiento
-Ejemplo 1. Aplicar un ajuste (o estiramiento) local del histograma a la imagen img, con ancho dado. El resultado se almacena en res.
-
-- Entrada: 
-
-![](Entrada/imagen1.jpg)
-
-
-- Salida:
-
-![](Salida/5-1_Filtro_Estiramiento_Local_Histograma.jpg)
-
-
-### 4.2 Efecto de Transición
-Ejemplo 2. Efecto de transición entre dos imágenes (que deben ser de igual tamaño), a través de un suavizado intermedio.
-
-- Entrada: Imagen A
-
-![](Entrada/imagen1.jpg) 
-
-- Entrada: Imagen B
+Entrada: 
 
 ![](Entrada/imagen2.jpg)
 
-- Salida:
 
-![](Salida/5-2_Filtro_Transicion_Dos_Imagenes0.jpg)
-![](Salida/5-2_Filtro_Transicion_Dos_Imagenes20.jpg)
-![](Salida/5-2_Filtro_Transicion_Dos_Imagenes40.jpg)
-![](Salida/5-2_Filtro_Transicion_Dos_Imagenes60.jpg)
-![](Salida/5-2_Filtro_Transicion_Dos_Imagenes80.jpg)
-![](Salida/5-2_Filtro_Transicion_Dos_Imagenes99.jpg)
+Salida:
 
+![](Salida/1_Transformacion_Zoomx2_Prueba2.jpg)
+
+### 2. Realizar el espejo vertical y horizontal de una imagen.
+
+#### Prueba 1
+
+Entrada: 
+
+![](Entrada/imagen1.jpg)
+
+
+Salida:1
+
+![](Salida/2_Transformacion_Espejo_Horizontal.jpg)
+
+Salida: 0
+
+![](Salida/2_Transformacion_Espejo_Vertical.jpg)
+
+#### Prueba 2
+
+##### Horizontal 
+
+Entrada: 
+
+![](Entrada/imagen2.jpg)
+
+Salida: 1
+
+![](Salida/2_Transformacion_Espejo_Horizontal_Prueba2.jpg)
+
+Salida: 0
+
+![](Salida/2_Transformacion_Espejo_Vertical_Prueba2.jpg)
+
+## 3. Rotar y escalar una imagen indicando ángulo y escala.
+
+### Prueba 1
+
+Entrada: 
+
+![](Entrada/imagen1.jpg)
+
+Salida: 25
+
+![](Salida/3_Transformacion_RotarEscalar_25.jpg)
+
+Salida: 50
+
+![](Salida/3_Transformacion_RotarEscalar_50.jpg)
+
+Salida: 100
+
+![](Salida/3_Transformacion_RotarEscalar_100.jpg)
+
+Salida: 125
+
+![](Salida/3_Transformacion_RotarEscalar_125.jpg)
+
+Salida: 150
+
+![](Salida/3_Transformacion_RotarEscalar_150.jpg)
+
+### Prueba 2
+
+Entrada: 
+
+![](Entrada/imagen2.jpg)
+
+
+Salida: 25
+
+![](Salida/3_Transformacion_RotarEscalar_25_Prueba2.jpg)
+
+Salida: 50
+
+![](Salida/3_Transformacion_RotarEscalar_50_Prueba2.jpg)
+
+Salida: 100
+
+![](Salida/3_Transformacion_RotarEscalar_100_Prueba2.jpg)
+
+Salida: 125
+
+![](Salida/3_Transformacion_RotarEscalar_125_Prueba2.jpg)
+
+Salida: 150
+
+![](Salida/3_Transformacion_RotarEscalar_150_Prueba2.jpg)
+
+## 4. Inclinar (shear) la imagen img en X en angulo grados y desplazar en X para que se quede centrada.
+
+### Prueba 1
+
+Entrada: 
+
+![](Entrada/imagen1.jpg)
+
+
+Salida: 30
+
+![](Salida/4_Transformacion_Inclinar_30.jpg)
+
+Salida: 60
+
+![](Salida/4_Transformacion_Inclinar_60.jpg)
+
+Salida: 90
+
+![](Salida/4_Transformacion_Inclinar_90.jpg)
+
+Salida: 100
+
+![](Salida/4_Transformacion_Inclinar_100.jpg)
+
+### Prueba 2
+
+Entrada: 
+
+![](Entrada/imagen2.jpg)
+
+
+Salida: 30
+
+![](Salida/4_Transformacion_Inclinar_30_Prueba2.jpg)
+
+Salida: 60
+
+![](Salida/4_Transformacion_Inclinar_60_Prueba2.jpg)
+
+Salida: 90
+
+![](Salida/4_Transformacion_Inclinar_90_Prueba2.jpg)
+
+Salida: 100
+
+![](Salida/4_Transformacion_Inclinar_100_Prueba2.jpg)
+
+## 4. Aplicar una transformación afín a una imagen img, suponiendo que tenemos 3 puntos en img y los 3 puntos correspondientes en destino.
+
+### Prueba 1
+
+Entrada: 
+
+![](Entrada/imagen1.jpg)
+
+Salida:
+
+![](Salida/5_Transformacion_Afin.jpg)
+
+### Prueba 2
+
+Entrada: 
+
+![](Entrada/imagen2.jpg)
+
+
+Salida:
+
+![](Salida/5_Transformacion_Afin_Prueba2.jpg)
