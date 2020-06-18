@@ -1,5 +1,5 @@
 # IMPLEMENTACIÓN DE FILTROS 
-La practica se finalizao a las 11:20
+La practica se finalizao a las 11:20 y se utilizaron 2 imagenes jpg 
 ## Preliminares
 - Implementar en OpenCV las siguientes operaciones en imagenes.
   - Rezise
@@ -34,7 +34,7 @@ Salida:
  
  ![](rezise.jpg)
  
-  
+  Se puede observar que no parece afectarle el zoom 
 ### 2. Flip
 Entrada:
 
@@ -44,6 +44,7 @@ Salida:
   
   ![](flip.jpg)
   
+La imagen se flipea con exito, el fondo al ser simetrico al momento de fliperse pareciera que solo se flipeo el archivo que dice jpg
 ### 3. Rotar
 Entrada:
   
@@ -52,7 +53,7 @@ Entrada:
 Salida:  
    
   ![](rotar.jpg)
-  
+
 ### 4. Inclinar
 Entrada:
   
