@@ -1,5 +1,6 @@
 # IMPLEMENTACIÓN DE TRANSFORMACIONES
-La practica se finalizo a las 13:30 del 24/06/2020 y se utilizaron 2 imagenes jpg 
+-La practica se finalizo a las 13:30 del 24/06/2020 y se utilizaron 2 imagenes jpg 
+
 ##Estudiante
 - Basurco Cayllahua, Eduardo Rolando
 
