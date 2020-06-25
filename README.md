@@ -8,7 +8,7 @@
 ### Profesor
 - Juan Carlos, Gutiérrez Cáceres
 
-## Trabajos
+## Trabajos Presentados
 ### Laboratorios (Grupales)
 - Laboratorio 1: Lectura del formato de imágenes con extensión BMP.
 - Laboratorio 2: Sumar una matriz en paralelo.
@@ -17,6 +17,7 @@
 - Laboratorio 5: Implementar la convolución en CUDA.
 
 ### Practicas (Individuales)
-- Practica 1: Practica en Open CV - Procesamiento global en OpenCV.
-- Practica 2: Practica en Open CV - Filtros en OpenCV.
-- Practica 3: Practica en Open CV - Transformaciones geométricas en OpenCV.
+- Practica 1: Procesamiento Global en OpenCV.
+- Practica 2: Filtros en OpenCV.
+- Practica 3: Transformaciones Geométricas en OpenCV.
+- Practica 4: Transformaciones de Perspectiva y Mapeo en OpenCV.
