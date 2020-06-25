@@ -13,5 +13,5 @@ Usando CUDA implementar el algoritmo de convolución
 
 ## Para ejecutar
 Compilación
-Visualizar el archivo [Laboratorio_06.ipynb](https://github.com/jhuni45/TCG-Laboratorio/blob/master/laboratorio_6/Laboratorio_06.ipynb)
+Visualizar el archivo [Laboratorio_06.ipynb](https://colab.research.google.com/drive/1WSIoYf9VBp6gSfhGshtdUuBIws5SqSVt?usp=sharing#scrollTo=plGYgZK-LbMJ)
 
