@@ -11,13 +11,22 @@ Usando CUDA implementar el algoritmo de convolución
 - Usar un kernel unidimensional (descomposición del kernel bidimensional)
 - Mostrar ejemplo de imágenes procesadas con las convoluciones implementadas anteriormente.
 
-## Para ejecutar
-Compilación
-```bash
-# Creamos el makefile que linkee las librerias
-cmake .
-# Compilamos el código
-make
-```
+- Para ejecutar ir a este [Link](https://github.com/jhuni45/TCG-Laboratorio/tree/master/laboratorio_5/Output)
 
+## Entrada
 
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/laboratorio_5/Images/pokachu.png)
+
+## Salidas
+
+### Sobel
+
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/laboratorio_5/Output/Sobelx.png)
+
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/laboratorio_5/Output/Sobely.png)
+
+### Filtro Gaussiano
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/laboratorio_5/Output/FiltroGaussiano.png)
+
+### Perfilado
+![](https://github.com/jhuni45/TCG-Laboratorio/blob/master/laboratorio_5/Output/Perfilado.png)
