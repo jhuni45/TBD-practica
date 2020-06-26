@@ -11,7 +11,7 @@ Usando CUDA implementar el algoritmo de convolución
 - Usar un kernel unidimensional (descomposición del kernel bidimensional)
 - Mostrar ejemplo de imágenes procesadas con las convoluciones implementadas anteriormente.
 
-- Para ejecutar ir a este [Link](https://github.com/jhuni45/TCG-Laboratorio/tree/master/laboratorio_5/Output)
+- Para ejecutar ir a este [Link Colab](https://colab.research.google.com/drive/175jk0dhvUKP6SX6UNTuzkKR1zUwScu5_#scrollTo=gA6KhQZEFoxl)
 
 ## Entrada
 
