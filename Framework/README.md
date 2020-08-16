@@ -1,5 +1,10 @@
 # Framework Editor de Imágenes
 
+## Slides
+[LINK SLIDES](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Framework/TCG_Framework_slides.pdf)
+## Link de video
+- Video de 5 minutos: Explicació de estructura y ejecución [LINK DRIVE VIDEO](https://drive.google.com/file/d/11ngc03poSr0t1sjDzFQS61kArTJUAndI/view?usp=sharing)
+
 ## Requerimientos o dependencias
 
 ```bash
