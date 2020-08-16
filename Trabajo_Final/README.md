@@ -1,12 +1,12 @@
 # Trabajo Final - Réplica paper: gSLICr: SLIC superpixels at over 250Hz
 #### Slides
-![LINK DE SLIDES](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Trabajo_Final/TCG_Final_slides.pdf)
+[LINK DE SLIDES](https://github.com/jhuni45/TCG-Laboratorio/blob/master/Trabajo_Final/TCG_Final_slides.pdf)
 
 #### Compilación en Colab
-![LINK COLAB CODIGO](https://colab.research.google.com/drive/16aMj1P9Rou97qqvGb8hInIckub0_DF8s?usp=sharing)
+[LINK COLAB CODIGO](https://colab.research.google.com/drive/16aMj1P9Rou97qqvGb8hInIckub0_DF8s?usp=sharing)
 #### Link de videos
-- Video de 10 minutos: Explicación y ejecución detallada de codigo y slides: ![LINK DRIVE VIDEO](https://drive.google.com/file/d/1tT6tiJgn-EwvPq_JV6GF8VxS-2EPIs60/view?usp=sharing)
-- Video de 2 minutos: Solo ejecución sin slides ni explicación de codigo: ![LINK DRIVE VIDEO](https://drive.google.com/file/d/1fgDZYfbbf3rLu_8L9yhVW2uHJ4rse4ee/view?usp=sharing)
+- Video de 10 minutos: Explicación y ejecución detallada de codigo y slides: [LINK DRIVE VIDEO](https://drive.google.com/file/d/1tT6tiJgn-EwvPq_JV6GF8VxS-2EPIs60/view?usp=sharing)
+- Video de 2 minutos: Solo ejecución sin slides ni explicación de codigo: [LINK DRIVE VIDEO](https://drive.google.com/file/d/1fgDZYfbbf3rLu_8L9yhVW2uHJ4rse4ee/view?usp=sharing)
 ## Requerimientos y dependencias
 ```bash
 python3 (>=.5)
