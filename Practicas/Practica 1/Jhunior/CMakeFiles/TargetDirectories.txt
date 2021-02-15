@@ -1,0 +1,3 @@
+/home/jhunior/Documentos/UNSA/quinto/TCGrafica/lab1/TCG-Laboratorio/Practicas/Practica 1/Jhunior/CMakeFiles/rebuild_cache.dir
+/home/jhunior/Documentos/UNSA/quinto/TCGrafica/lab1/TCG-Laboratorio/Practicas/Practica 1/Jhunior/CMakeFiles/DisplayImage.dir
+/home/jhunior/Documentos/UNSA/quinto/TCGrafica/lab1/TCG-Laboratorio/Practicas/Practica 1/Jhunior/CMakeFiles/edit_cache.dir
