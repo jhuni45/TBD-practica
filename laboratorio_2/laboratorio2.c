@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <time.h>
 #include <math.h>
-
+#include <omp.h>
 
 #define M 1024
 #define N 512
@@ -34,9 +34,9 @@ int main() {
             a[i][j] = 1;
         }
     }
-/*
+/*row
     printf("\nLa matriz es: \n");
-    for(i=0; i < rows; i++) {
+    for(i=0; i < rows; i++) {1
         for(j=0; j < columns; j++)
             printf("%d ", a[i][j]);
     printf("\n");
@@ -64,7 +64,8 @@ int main() {
     for (i = 0; i < N; i++){
         for ( j = 0; j < M; j++){
            acum+=a[j][i];
-        }    
+        }  
+        printf("acumulado: %d \n",acum);  
     }
     secuentialTend=clock();
     printf("Para matriz %dx%d\n",M,N);
